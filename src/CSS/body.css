@@ -1,0 +1,31 @@
+nav{
+    display: flex;
+    justify-content: space-around;
+    font-size: 2em;
+    background-color: rgb(196, 117, 47);
+    align-items: center;
+    padding: 0 20%;
+}
+.panel{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: 1.5em;
+    padding: 20px 0;
+}
+
+
+.preview{
+    background: no-repeat url("../imagin/resto.jpg");
+    height: 1000px;
+}
+
+.logo{
+    font-weight: bold;
+    display: flex;
+    width: min-content;
+    flex-wrap: wrap;
+    justify-content: center;
+}
