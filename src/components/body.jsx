@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
-import '../CSS/body.css'
-import logo from '../imagin/fleur-de-lis-gold.svg'
+import '../CSS/body.css';
+import logo from '../imagin/fleur-de-lis-gold.svg';
 
 const Body = () => {
-    const [Panel, SetPanel] = useState({onMouseOvery: null, div: []})
+    const [Panel, SetPanel] = useState({onMouseOvery: null, div: ['Добро пожаловать в ресторан Май']})
 
     const resetPanel = (e) =>{
         e.preventDefault()
@@ -42,8 +42,14 @@ const Body = () => {
                         <img src={logo} width={60} alt="logo" />
                         <span>Май</span>
                     </a>
-                    <a className='nav-item w' href=''>Доставка</a>
-                    <a className='nav-item w' href=''>Контакты</a>
+                    <a className='nav-item w click' href='' onMouseOver={resetPanel}>
+                        Доставка
+                            </a>
+                    
+                    <a className='nav-item w click' href='' onMouseOver={resetPanel}>
+                        Контакты
+                    </a>
+                    
                 </nav>
                     <div 
                     onMouseOver={Panel.onMouseOvery}
