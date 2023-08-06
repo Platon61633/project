@@ -1,0 +1,34 @@
+.cont{
+    /* background-color: rgba(0, 0, 0, 0.488);
+    z-index: 1; */
+}
+
+.contacts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 200px;
+    height: 500px;
+    font-size: 30px;
+    color: white;
+    background-color: rgb(255, 174, 104);
+}
+
+.contacts h1{
+    color: black;
+}
+
+.contacts div{
+    font-size: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 0 20px 50px;
+}
+.contacts a{
+    color: rgb(184, 91, 45);
+}

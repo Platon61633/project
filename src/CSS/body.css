@@ -17,9 +17,17 @@ nav{
 }
 
 
-.preview{
-    background: no-repeat url("../imagin/resto.jpg");
+#preview{
     height: 1000px;
+    background-size: cover;
+}
+
+.img-home{
+    background: no-repeat url("../imagin/resto.jpg");
+}
+
+.img-cont{
+    background: url('../imagin/resto2_q\ \(3\).jpg') no-repeat;
 }
 
 .logo{

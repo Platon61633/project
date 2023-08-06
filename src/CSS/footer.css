@@ -4,5 +4,7 @@
     color: white;
     background-color: black;
     font-size: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
     padding: 80px 10px 40px;
 }
