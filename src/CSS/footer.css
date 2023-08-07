@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     color: white;
-    background-color: black;
     font-size: 30px;
     flex-wrap: wrap;
     gap: 15px;

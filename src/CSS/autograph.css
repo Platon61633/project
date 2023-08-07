@@ -1,0 +1,50 @@
+.autograph{
+    display: block;
+    color: aqua;
+    text-align: center;
+    border: 20px solid black;
+    font-size: 50px;
+    font-family: 'Rationale';
+    margin-top: 350px;
+}
+.autograph div{
+    border: 20px solid black;
+}
+
+
+
+/* --hover-- */
+
+.autograph:hover{
+    border: 20px groove blueviolet;
+
+}
+
+.red:hover{
+    border: 20px groove red;
+    color: red
+}
+.orange:hover{
+    border: 20px groove orange;
+    color: orange
+}
+.yellow:hover{
+    border: 20px groove yellow;
+    color: yellow
+}
+.green:hover{
+    border: 20px groove green;
+    color: green
+}
+.blue:hover{
+    border: 20px groove blue;
+    color: blue;
+}
+.dark-blue:hover{
+    border: 20px groove darkblue;
+    color: darkblue;
+}
+.purple:hover{
+    border: 20px groove purple;
+    color: aqua;
+}

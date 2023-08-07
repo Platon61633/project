@@ -11,17 +11,6 @@
 }
 
 
-
-
-
-
-.autograph{
-    display: block;
-    color: aqua;
-    text-align: center;
-    padding: 30px;
-    font-size: 50px;
-    border: 30px groove blueviolet;
-    font-family: 'Rationale';
+body{
     background-color: black;
 }

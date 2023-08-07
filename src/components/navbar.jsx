@@ -10,7 +10,7 @@ const NavBar = ({image, SetImage}) => {
 
     const resetPanel = (e) =>{
         e.preventDefault()
-        SetPanel({onMouseOvery: null, div: []})
+        SetPanel({onMouseOvery: null, div: ['Добро пожаловать в ресторан Май']})
     }
 
     
@@ -31,13 +31,13 @@ const NavBar = ({image, SetImage}) => {
         })
     }
 
-    const May =  (e) =>{
-        e.preventDefault()
-        SetPanel({
-            onMouseOvery: May,
-            div: ['Добро пожаловать в ресторан Май']
-        })
-    }
+    // const May =  (e) =>{
+    //     e.preventDefault()
+    //     SetPanel({
+    //         onMouseOvery: May,
+    //         div: ['Добро пожаловать в ресторан Май']
+    //     })
+    // }
 
     const FuncCont = (e) =>{
         SetImage('img-cont')
@@ -53,7 +53,7 @@ const NavBar = ({image, SetImage}) => {
             <nav>
                 <Link className='nav-item w resto' href='' onMouseOver={resto}>Ресторан</Link>
                 <Link className='nav-item w menu' href='' onMouseOver={menu}>Меню</Link>
-                <Link className='nav-item w logo' to='/body' onClick={FuncHome} onMouseOver={May}>
+                <Link className='nav-item w logo' to='/body' onClick={FuncHome} onMouseOver={resetPanel}>
                     <img src={logo} width={60} alt="logo" />
                     <span>Май</span>
                 </Link>
