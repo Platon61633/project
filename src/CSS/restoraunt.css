@@ -1,0 +1,57 @@
+.resto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2em;
+    color: black;
+    background-color:antiquewhite;
+}
+
+.start{
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+.start h1{
+    font-size: 2em;
+}
+.resto3{
+    contain: content;
+    padding-top: 20px;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 200px 35px 0 ;
+}
+
+.reserv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title a img{
+    width: 40px;
+}
+
+.title a img:hover{
+    scale: 1.1;
+}
+
+.event{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+
+
+@media  (max-width: 800px){
+    .start{
+    flex-wrap: wrap;
+    }
+}
