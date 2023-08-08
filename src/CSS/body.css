@@ -18,17 +18,25 @@ nav{
 
 
 #preview{
-    height: 1000px;
     background-size: cover;
 }
 
+/* -------IMG----------- */
+
 .img-home{
     background: no-repeat url("../imagin/resto.jpg");
+    /* height: 1000px; */
 }
 
 .img-cont{
     background: url('../imagin/resto2_q\ \(3\).jpg') no-repeat;
 }
+
+.img-restoraunt{
+    background-color: antiquewhite;
+}
+
+/* ------------------------- */
 
 .logo{
     font-weight: bold;

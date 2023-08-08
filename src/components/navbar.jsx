@@ -3,6 +3,7 @@ import '../CSS/body.css';
 import logo from '../imagin/fleur-de-lis-gold.svg';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import Contacts from './contacts';
+import Resto from './restoraunt';
 
 const NavBar = ({image, SetImage}) => {
 
@@ -46,13 +47,16 @@ const NavBar = ({image, SetImage}) => {
     const FuncHome = (e) =>{
         SetImage('img-home')
     }
+    const FuncResto = (e)=>{
+        SetImage('img-restoraunt')
+    }
 
     return(
         
         <BrowserRouter>
             <nav>
-                <Link className='nav-item w resto' href='' onMouseOver={resto}>Ресторан</Link>
-                <Link className='nav-item w menu' href='' onMouseOver={menu}>Меню</Link>
+                <Link className='nav-item w' to='/restoraunt' onClick={FuncResto} onMouseOver={resto}>Ресторан</Link>
+                <Link className='nav-item w' href='' onMouseOver={menu}>Меню</Link>
                 <Link className='nav-item w logo' to='/body' onClick={FuncHome} onMouseOver={resetPanel}>
                     <img src={logo} width={60} alt="logo" />
                     <span>Май</span>
@@ -73,6 +77,7 @@ const NavBar = ({image, SetImage}) => {
             </div>
             <Routes>
                 <Route path='/contacts' element={<Contacts/>}/>
+                <Route path='/restoraunt' element={<Resto/>}/>
                 <Route path='/body'/>
             </Routes>
         </BrowserRouter>
