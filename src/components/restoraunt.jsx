@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../CSS/restoraunt.css';
 import resto3 from '../imagin/resto3ob.jpg'
 import arrowR from '../imagin/cil-arrow-circle-right.svg'
+import axios from 'axios';
 
 const Resto = () => {
+
+    const [Events, SetEvents] = useState([])
+
+
+        useEffect(function GetEvents() {
+            axios.get('http://backrestoraunt/')
+            .then(resp=>SetEvents(resp.data))
+            console.log(Events);
+        }, [])
+
+        console.log(Events)
+
     return(
         <div className='resto'>
             <div className='start'>
@@ -19,12 +32,14 @@ const Resto = () => {
             </div> 
             <h1 style={{margin: '250px 0 150px'}}>АНОНСЫ И СОБЫТИЯ</h1>
             <div className='event'>
-                <img src={arrowR} alt="img" />
-                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, distinctio, officia perferendis aspernatur aliquid unde eum odit commodi accusamus repudiandae cumque illo quisquam aliquam quos nemo sapiente eius provident in?</div>
-                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, distinctio, officia perferendis aspernatur aliquid unde eum odit commodi accusamus repudiandae cumque illo quisquam aliquam quos nemo sapiente eius provident in?</div>
-                <img src={arrowR} alt="img" />
-                <img src={arrowR} alt="img" />
-                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, distinctio, officia perferendis aspernatur aliquid unde eum odit commodi accusamus repudiandae cumque illo quisquam aliquam quos nemo sapiente eius provident in?</div>
+               {Events.map(e=>
+                <div>
+                    <div>{e[1]}</div>
+                    <h1>{e[2]}</h1>
+                    <code>{e[3]}</code>
+                </div>
+               )}
+                
             </div>
         </div>
     );
