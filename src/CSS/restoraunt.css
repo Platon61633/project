@@ -42,10 +42,115 @@
     scale: 1.1;
 }
 
-.event{
-    
+.events{
+    display: block;
+    padding: 30px;
 }
 
+.event img{
+    width: 50%;
+}
+
+.event span{
+    margin: 30px 0;
+    display: block;
+    text-align: center;
+}
+
+.event p{
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+
+.event{
+    width: 100%;
+    display: flex;
+    flex-grow: 1/1;
+}
+code{
+    display: block;
+    width: 50%;
+    height: 600px;
+    background-color: aliceblue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.polit{
+    background-color: aliceblue;
+    height: 1000px;
+}
+.important{
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5em;
+    padding: 10px;
+}
+.important div{
+    border: 6px double black;
+    padding: 25px;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+
+.vnts{
+    width: 100%;
+    font-size: 1.6em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+}
+
+.vnts td, .vnts th{
+    vertical-align: top;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+    padding: 10px;
+    border: 2px solid rgb(85, 85, 191);
+}
+
+.fixPanel{
+    position: fixed;
+    bottom: 10%;
+    border: 3px solid rgb(85, 85, 191);
+    background-color: aliceblue;
+}
+
+.fixPanel div{
+    margin: 15px;
+    text-align: center;
+}
+
+.BackfixPanel{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.393);
+    width: 1800px;
+    height: 1800px;
+}
+
+.fixPanel textarea{
+    font-size: 0.8em;
+    font-family: 'Times New Roman', Times, serif;
+    height: 500px;
+}
 
 
 

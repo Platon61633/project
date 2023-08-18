@@ -10,12 +10,11 @@ const Resto = () => {
 
 
         useEffect(function GetEvents() {
-            axios.get('http://backrestoraunt/')
+            axios.get('http://backrestoraunt/events.php')
             .then(resp=>SetEvents(resp.data))
-            console.log(Events);
         }, [])
+        
 
-        console.log(Events)
 
     return(
         <div className='resto'>
@@ -31,16 +30,19 @@ const Resto = () => {
                 </span>
             </div> 
             <h1 style={{margin: '250px 0 150px'}}>АНОНСЫ И СОБЫТИЯ</h1>
-            <div className='event'>
+            <div className='events'>
                {Events.map(e=>
-                <div>
-                    <div>{e[1]}</div>
-                    <h1>{e[2]}</h1>
-                    <code>{e[3]}</code>
+                <div className='event'>
+                    {e[0]%2===0 ? <p></p> : <img src={e[3]}/>}
+                    <p>
+                        <span>{e[1]}</span>
+                        <h1>{e[2]}</h1>
+                    </p>
+                    {e[0]%2===0 ? <img src={e[3]}/> : <p></p>}
                 </div>
                )}
                 
-            </div>
+            </div> 
         </div>
     );
 };

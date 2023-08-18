@@ -25,7 +25,7 @@ nav{
 
 .img-home{
     background: no-repeat url("../imagin/resto.jpg");
-    /* height: 1000px; */
+    min-height: 1000px;
 }
 
 .img-cont{
@@ -63,3 +63,16 @@ nav{
     color: rgba(0, 0, 0, 0.608);
     content: 'Нажмите';
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

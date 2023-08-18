@@ -4,6 +4,7 @@ import logo from '../imagin/fleur-de-lis-gold.svg';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import Contacts from './contacts';
 import Resto from './restoraunt';
+import Polit from './polit';
 
 const NavBar = ({image, SetImage}) => {
 
@@ -79,6 +80,8 @@ const NavBar = ({image, SetImage}) => {
                 <Route path='/contacts' element={<Contacts/>}/>
                 <Route path='/restoraunt' element={<Resto/>}/>
                 <Route path='/body'/>
+                    
+                <Route path='/qwertyuiop' element={<Polit/>}/>
             </Routes>
         </BrowserRouter>
     );

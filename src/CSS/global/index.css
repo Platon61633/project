@@ -10,6 +10,13 @@
     text-decoration: none;
 }
 
+.cursor-p{
+    cursor: pointer;
+}
+textarea{
+    font-family: 'Times New Roman', Times, serif;
+    width: 100%;
+}
 
 body{
     background-color: black;
