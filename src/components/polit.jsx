@@ -85,7 +85,6 @@ const Polit = () => {
                     <tbody>
                         {PolEvents.map(e=>
                             <tr>
-                            {/* {e.map(ev=><td>{ev}</td>)} */}
                             <td>{e[0]}</td>
                             <td>{e[1]}</td>
                             <td for='length'>{e[2]}</td>

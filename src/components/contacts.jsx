@@ -18,6 +18,8 @@ const Contacts = () => {
                     <p>Завтраки с 08:00-14:00</p>
                 </div>
             </div>
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ae2f613997e84e2a7acc10e47a7ecda90b49533f14d157836f6022ea5e867b5b2&amp;source=constructor" width="100%" height="541" frameborder="0">
+            </iframe>
         </div>
     );
 };

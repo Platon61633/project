@@ -8,11 +8,11 @@ import Polit from './polit';
 
 const NavBar = ({image, SetImage}) => {
 
-    const [Panel, SetPanel] = useState({onMouseOvery: null, div: ['Добро пожаловать в ресторан Май']})
+    const [Panel, SetPanel] = useState({onMouseOvery: null, div: [{title: 'Добро пожаловать в ресторан Май', Link:'/'}]})
 
     const resetPanel = (e) =>{
         e.preventDefault()
-        SetPanel({onMouseOvery: null, div: ['Добро пожаловать в ресторан Май']})
+        SetPanel({onMouseOvery: null, div: [{title: 'Добро пожаловать в ресторан Май', Link:'/'}]})
     }
 
     
@@ -21,7 +21,7 @@ const NavBar = ({image, SetImage}) => {
         e.preventDefault()
         SetPanel({
             onMouseOvery: resto,
-            div: ['О ресторане', 'Полезное']
+            div: [{title: 'О ресторане', LinkTo: '/restoraunt'}, {title: 'Полезное', LinkTo: '/'}]
         })
     }
 
@@ -29,7 +29,13 @@ const NavBar = ({image, SetImage}) => {
         e.preventDefault()
         SetPanel({
             onMouseOvery: menu,
-            div: ['Кухня', 'Специальное предложение', 'Завтраки', 'Винная карта','Бар','Банктное меню']
+            div: [
+            {title:'Кухня', LinkTo: '/'}, 
+            {title:'Специальное предложение', LinkTo: '/'},
+            {title: 'Завтраки',LinkTo: '/'},
+            {title:'Винная карта', LinkTo: '/'},
+            {title: 'Бар', LinkTo: '/'},
+            {title: 'Банктное меню', LinkTo: '/'}]
         })
     }
 
@@ -71,9 +77,9 @@ const NavBar = ({image, SetImage}) => {
             className='panel'>
                 {Panel.div.map(
                 e => 
-                    <div onMouseOver={Panel.onMouseOvery} className='panel-item'>
-                        {e}
-                    </div>
+                    <Link to={e.LinkTo} onMouseOver={Panel.onMouseOvery} className='w panel-item'>
+                        {e.title}
+                    </Link>
             )}
             </div>
             <Routes>
