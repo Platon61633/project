@@ -13,7 +13,7 @@ const Body = () => {
     return(
         <div className='body'>
             <div id='preview' className={image}>
-                <NavBar image={image} SetImage={SetImage}/>
+                <div style={{height: '1000px'}}></div>
             </div>
         </div>
     );

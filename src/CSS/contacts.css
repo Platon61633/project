@@ -1,4 +1,7 @@
-
+.cont{
+    background: url('../imagin/resto2_q\ \(3\).jpg') no-repeat;
+    background-size: cover;
+}
 
 .contacts{
     display: flex;

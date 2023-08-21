@@ -10,7 +10,7 @@ const Resto = () => {
 
 
         useEffect(function GetEvents() {
-            axios.get('http://backrestoraunt/events.php')
+            axios.get('http://backrestoraunt?for=event')
             .then(resp=>SetEvents(resp.data))
         }, [])
         
@@ -41,8 +41,7 @@ const Resto = () => {
                     {e[0]%2===0 ? <img src={e[3]}/> : <p></p>}
                 </div>
                )}
-                
-            </div> 
+            </div>
         </div>
     );
 };

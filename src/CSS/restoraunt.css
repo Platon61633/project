@@ -10,7 +10,7 @@
 .start{
     display: flex;
     justify-content: center;
-    padding: 15px;
+    padding: 100px 15px 15px;
 }
 .start h1{
     font-size: 2em;
@@ -67,14 +67,40 @@
     display: flex;
     flex-grow: 1/1;
 }
-code{
-    display: block;
-    width: 50%;
-    height: 600px;
-    background-color: aliceblue;
+/* useful */
+.useful{
+    background: url('../imagin/corporativ.jpg') no-repeat;
+    background-size: cover;
+    padding-top: 150px;
 }
 
-
+.sation{
+    background-color: aliceblue;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
+    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
+    margin: 30px;
+    padding: 50px;
+}
+.sation h1{
+    font-size: 2em;
+}
+.sation time{
+    color: rgb(10, 107, 10);
+    font-size: 1.5em;
+    display: block;
+    text-align: right;
+}
+.sation .desc{
+    font-size: 1.3em;
+    padding: 30px 100px;
+}
+.sation .desc p{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+}
 
 
 
@@ -88,11 +114,12 @@ code{
 
 .polit{
     background-color: aliceblue;
-    height: 1000px;
+    padding-top: 100px;
 }
 .important{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 1em;
     font-size: 1.5em;
     padding: 10px;
 }
@@ -104,7 +131,7 @@ code{
 }
 
 
-.vnts{
+.tbl{
     width: 100%;
     font-size: 1.6em;
     display: flex;
@@ -113,7 +140,7 @@ code{
     padding: 60px;
 }
 
-.vnts td, .vnts th{
+.tbl td, .tbl th{
     vertical-align: top;
     white-space: nowrap;
     overflow: hidden;
@@ -125,7 +152,7 @@ code{
 
 .fixPanel{
     position: fixed;
-    bottom: 10%;
+    top: 0;
     border: 3px solid rgb(85, 85, 191);
     background-color: aliceblue;
 }

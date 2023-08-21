@@ -4,6 +4,7 @@ import '../CSS/contacts.css'
 const Contacts = () => {
     return(
         <div className='cont'>
+            <div style={{height: '100px'}}></div>
             <div className='contacts'>
                 <h1>Контакты:</h1>
                 <div>

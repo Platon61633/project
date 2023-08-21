@@ -9,6 +9,7 @@ nav{
 .panel{
     display: flex;
     justify-content: space-around;
+    position: absolute;
     color: white;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.6);
