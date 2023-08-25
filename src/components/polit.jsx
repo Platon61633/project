@@ -4,7 +4,6 @@ import trash from '../imagin/cil-trash.svg';
 import close from "../imagin/cil-x-circle.svg";
 import RedClose from "../imagin/cil-x-circle-red.svg";
 import pencil from '../imagin/cil-pencil.svg';
-import resto from '../imagin/resto.jpg';
 
 const Polit = () => {
 
@@ -22,13 +21,7 @@ const Polit = () => {
         events.current?.scrollIntoView({behavior: 'smooth'});
     }
 
-    const Operatation = (r)=>{
-        if (!Boolean(r)) {
-            window.location.reload()
-        }else{
-            SeTGg(true)
-        }
-    }
+    
 
     useEffect(function GetPosts() {
         axios.get('http://backrestoraunt?for=event')
@@ -44,21 +37,36 @@ const Polit = () => {
         window.location.reload();
     }
 
+
+    const Operatation = (r)=>{
+            if (!Boolean(r)) {
+                window.location.reload()
+            }else{
+                SeTGg(true)
+            }
+        }
+
     const creatEvent = async (type)=>{
         switch (type) {
             case 'event':
                 await axios.post('http://backrestoraunt?for=event',JSON.stringify([Inp.name, Inp.desc, Inp.img]))
+                .then(r=>Operatation(r.data))
+                
                 break;
             case 'useful':
                 await axios.post('http://backrestoraunt?for=useful',JSON.stringify([Inp.name,  Inp.date, Inp.desc, Inp.time, Inp.num]))
+                .then(r=>Operatation(r.data))
+                break;
+            default:
+                console.log('тип'+type+'не найден');
                 break;
         }
-        window.location.reload()
+        // window.location.reload()
     }
 
     const fixPostE = (id)=>{
         let i = 0
-        while (id!=PolEvents[i][0]) {
+        while (id!==PolEvents[i][0]) {
         i+=1
         }
         SetInp({name: PolEvents[i][1], desc: PolEvents[i][2], img: PolEvents[i][3]})
@@ -68,7 +76,7 @@ const Polit = () => {
 
     const fixPostU = (id)=>{
         let i = 0
-        while (id!=Useful[i][0]) {
+        while (id!==Useful[i][0]) {
         i+=1
         }
         SetInp({name: Useful[i][1], date: Useful[i][2], desc: Useful[i][3], time: Useful[i][4], num: Useful[i][5]})
@@ -83,6 +91,9 @@ const Polit = () => {
                 break;
             case 'event':
                 await axios.patch('http://backrestoraunt?for=event',JSON.stringify([FixId, Inp.name, Inp.desc, Inp.img]))
+                break;
+            default:
+                console.log('тип'+type+'не найден');
                 break;
         }
         window.location.reload()
@@ -102,7 +113,7 @@ const Polit = () => {
             {gg?
             <div className='panlOP' onClick={()=>SeTGg(false)}>
                 <span onClick={(e)=>e.stopPropagation()}>Ошибка, попробуйте по другому</span>
-                <img src={RedClose} alt="" />
+                <img src={RedClose} alt="Закрыть" />
             </div>
             :<div></div>}
 
@@ -121,8 +132,8 @@ const Polit = () => {
                             <th>описание</th>
                             <th>время</th>
                             <th>телефон</th>
-                            <th><img src={trash} alt="" width={30} /></th>
-                            <th><img src={pencil} alt="" width={30}/></th>
+                            <th><img src={trash} alt="Закрыть" width={30} /></th>
+                            <th><img src={pencil} alt="Удалить" width={30}/></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -134,7 +145,7 @@ const Polit = () => {
                             <td>{e[3]}</td>
                             <td>{e[4]}</td>
                             <td>{e[5]}</td>
-                            <td onClick={()=>dlt(e[0], 'useful')}><img src={close} className='cursor-p' alt=""   /></td>
+                            <td onClick={()=>dlt(e[0], 'useful')}><img src={close} className='cursor-p' alt="Удалить"   /></td>
                             <td className='cursor-p' onClick={()=>fixPostU(e[0])}><u><i>Изменить</i></u></td>
                             </tr>
                         )}
@@ -203,8 +214,8 @@ const Polit = () => {
                             <th>имя</th>
                             <th>описание</th>
                             <th>фото</th>
-                            <th><img src={trash} alt="" width={30} /></th>
-                            <th><img src={pencil} alt="" width={30}/></th>
+                            <th><img src={trash} alt="Закрыть" width={30} /></th>
+                            <th><img src={pencil} alt="Удалить" width={30}/></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -214,9 +225,9 @@ const Polit = () => {
                             <td>{e[1]}</td>
                             <td for='length'>{e[2]}</td>
                             <td>
-                                <img src={e[3]} width={300} alt="" />
+                                <img src={e[3]} width={300} alt="Картинка" />
                             </td>
-                            <td onClick={()=>dlt(e[0], 'event')}><img src={close} className='cursor-p' alt=""   /></td>
+                            <td onClick={()=>dlt(e[0], 'event')}><img src={close} className='cursor-p' alt="Картинка"   /></td>
                             <td className='cursor-p' onClick={()=>fixPostE(e[0])}><u><i>Изменить</i></u></td>
                             </tr>
                         )}
