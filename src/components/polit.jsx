@@ -2,11 +2,11 @@ import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import trash from '../imagin/cil-trash.svg';
 import close from "../imagin/cil-x-circle.svg";
-import pencil from '../imagin/cil-pencil.svg'
-import resto from '../imagin/resto.jpg'
+import RedClose from "../imagin/cil-x-circle-red.svg";
+import pencil from '../imagin/cil-pencil.svg';
+import resto from '../imagin/resto.jpg';
 
 const Polit = () => {
-
 
     const [Inp, SetInp] = useState({name: '', desc: '', img: '', date: '', time: '', num:''})
     const [Useful, SetUseful] = useState([])
@@ -22,42 +22,39 @@ const Polit = () => {
         events.current?.scrollIntoView({behavior: 'smooth'});
     }
 
-    
+    const Operatation = (r)=>{
+        if (!Boolean(r)) {
+            window.location.reload()
+        }else{
+            SeTGg(true)
+        }
+    }
 
-    useEffect(function GetEvents() {
+    useEffect(function GetPosts() {
         axios.get('http://backrestoraunt?for=event')
         .then(resp=>SetEvents(resp.data))
-    }, [])
-
-    useEffect(function GetUseful() {
         axios.get('http://backrestoraunt?for=useful')
         .then(rsp=> SetUseful(rsp.data))
     }, [])
 
 
-    const dltE = async (e) =>{
-        await axios.delete('http://backrestoraunt?for=event',{ data: e })
+
+    const dlt = async (e, type) =>{
+        await axios.delete('http://backrestoraunt?for='+type,{ data: e })
         window.location.reload();
     }
 
-    const dltU = async (e) =>{
-        await axios.delete('http://backrestoraunt?for=useful',{ data: e })
-        window.location.reload();
+    const creatEvent = async (type)=>{
+        switch (type) {
+            case 'event':
+                await axios.post('http://backrestoraunt?for=event',JSON.stringify([Inp.name, Inp.desc, Inp.img]))
+                break;
+            case 'useful':
+                await axios.post('http://backrestoraunt?for=useful',JSON.stringify([Inp.name,  Inp.date, Inp.desc, Inp.time, Inp.num]))
+                break;
+        }
+        window.location.reload()
     }
-
-    const creatEvent = async ()=>{
-        await axios.post('http://backrestoraunt?for=event',JSON.stringify([Inp.name, Inp.desc, Inp.img]))
-        window.location.reload();
-    }
-    const creatUseful = async ()=>{
-        await axios.post('http://backrestoraunt?for=useful',JSON.stringify([Inp.name, Inp.desc, Inp.date, Inp.time, Inp.num]))
-        // .then(r=>console.log(r.data))
-        window.location.reload();
-    }
-
-
-
-    
 
     const fixPostE = (id)=>{
         let i = 0
@@ -79,15 +76,21 @@ const Polit = () => {
         SetFixFU(true)
     }
 
-    const DoFixE = async (e)=>{
-        await axios.patch('http://backrestoraunt?for=event',JSON.stringify([FixId, Inp.name, Inp.desc, Inp.img]))
-        window.location.reload();
+    const DoFix = async (type)=>{
+        switch (type) {
+            case 'useful':
+                await axios.patch('http://backrestoraunt?for=useful',JSON.stringify([FixId, Inp.name, Inp.date, Inp.desc, Inp.time, Inp.num]))
+                break;
+            case 'event':
+                await axios.patch('http://backrestoraunt?for=event',JSON.stringify([FixId, Inp.name, Inp.desc, Inp.img]))
+                break;
+        }
+        window.location.reload()
     }
 
-    const DoFixU = async (e)=>{
-        await axios.patch('http://backrestoraunt?for=useful',JSON.stringify([FixId, Inp.name, Inp.date, Inp.desc, Inp.time, Inp.num]))
-        window.location.reload();
-    }
+
+    const [gg, SeTGg] = useState(false)
+
 
 
     return(
@@ -96,6 +99,13 @@ const Polit = () => {
                 <div onClick={GoEvents}>АНОНСЫ И СОБЫТИЯ</div>
                 <div>МЕНЮ</div>
             </h1>
+            {gg?
+            <div className='panlOP' onClick={()=>SeTGg(false)}>
+                <span onClick={(e)=>e.stopPropagation()}>Ошибка, попробуйте по другому</span>
+                <img src={RedClose} alt="" />
+            </div>
+            :<div></div>}
+
 
 {/* ---------------------   USEFUL----------------------- */}
             <div className='tbl' ref={events}>
@@ -123,8 +133,8 @@ const Polit = () => {
                             <td for='length'>{e[2]}</td>
                             <td>{e[3]}</td>
                             <td>{e[4]}</td>
-                            <td>+{e[5]}</td>
-                            <td><img src={close} className='cursor-p' alt=""  onClick={()=>dltU(e[0])} /></td>
+                            <td>{e[5]}</td>
+                            <td onClick={()=>dlt(e[0], 'useful')}><img src={close} className='cursor-p' alt=""   /></td>
                             <td className='cursor-p' onClick={()=>fixPostU(e[0])}><u><i>Изменить</i></u></td>
                             </tr>
                         )}
@@ -138,7 +148,7 @@ const Polit = () => {
                             <td colSpan={2}></td>
                         </tr>
                         <tr>
-                        <th colSpan={8}><button className='cursor-p' onClick={creatUseful}>Создать...</button></th>
+                        <th colSpan={8}><button className='cursor-p' onClick={()=>creatEvent('useful')}>Создать...</button></th>
                         </tr></tbody>
                 </table>
                 {fixFU ? 
@@ -170,7 +180,7 @@ const Polit = () => {
                                 <td>
                                     <textarea placeholder='номер' value={Inp.num} type="text" onChange={e=> SetInp({...Inp, num: e.target.value})}/>
                                 </td>
-                                <tr> <th colSpan={6} className='cursor-p' onClick={DoFixU}>Изменить</th></tr>
+                                <tr> <th colSpan={6} className='cursor-p' onClick={()=>DoFix('useful')}>Изменить</th></tr>
                                 <tr> <th colSpan={6} className='cursor-p' onClick={()=>SetFixFU(false)}>Назад</th></tr>
                             </tbody>
                         </table>
@@ -206,7 +216,7 @@ const Polit = () => {
                             <td>
                                 <img src={e[3]} width={300} alt="" />
                             </td>
-                            <td><img src={close} className='cursor-p' alt=""  onClick={()=>dltE(e[0])} /></td>
+                            <td onClick={()=>dlt(e[0], 'event')}><img src={close} className='cursor-p' alt=""   /></td>
                             <td className='cursor-p' onClick={()=>fixPostE(e[0])}><u><i>Изменить</i></u></td>
                             </tr>
                         )}
@@ -218,7 +228,7 @@ const Polit = () => {
                             <td colSpan={2}></td>
                         </tr>
                         <tr>
-                        <th colSpan={6}><button className='cursor-p' onClick={creatEvent}>Создать...</button></th>
+                        <th colSpan={6}><button className='cursor-p' onClick={()=>creatEvent('event')}>Создать...</button></th>
                         </tr></tbody>
                 </table>
                 {fixFE ? 
@@ -242,7 +252,7 @@ const Polit = () => {
                                 <td>
                                     <textarea placeholder='фото' value={Inp.img} type="text" onChange={e=> SetInp({...Inp, img: e.target.value})}/>
                                 </td>
-                                <tr> <th colSpan={4} className='cursor-p' onClick={DoFixE}>Изменить</th></tr>
+                                <tr> <th colSpan={4} className='cursor-p' onClick={()=>DoFix('event')}>Изменить</th></tr>
                                 <tr> <th colSpan={4} className='cursor-p' onClick={()=>SetFixFE(false)}>Назад</th></tr>
                             </tbody>
                         </table>
