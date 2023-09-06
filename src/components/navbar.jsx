@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, {  useState } from 'react';
 import '../CSS/body.css';
 import logo from '../imagin/fleur-de-lis-gold.svg';
-import { BrowserRouter, Link, Route, Routes, redirect, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import Contacts from './contacts';
 import Resto from './restoraunt';
 import Polit from './polit';
