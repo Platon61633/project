@@ -8,15 +8,20 @@
 }
 
 .start{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-content: center;
     padding: 100px 15px 15px;
 }
 .start h1{
     font-size: 2em;
 }
-.resto3{
+
+.resto3 img{
     contain: content;
+}
+.resto3{
+    overflow: hidden;
     padding-top: 20px;
 }
 

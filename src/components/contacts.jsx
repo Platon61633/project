@@ -1,7 +1,9 @@
 import React from 'react';
 import '../CSS/contacts.css'
 
+
 const Contacts = () => {
+
     return(
         <div className='cont'>
             <div style={{height: '100px'}}></div>

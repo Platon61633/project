@@ -1,0 +1,22 @@
+.menu{
+    margin-top: 100px;
+    color: white;
+}
+.ramka{
+    max-height: 1000px;
+    overflow: hidden;
+}
+  .tet{
+    position: relative;
+    z-index: 2;
+  }
+
+  .menu img{
+    position: relative;
+    min-height: 1200px;
+  }
+.background{
+    position: relative;
+    min-height: 1200px;
+    background: url('../imagin/resto.jpg');
+}

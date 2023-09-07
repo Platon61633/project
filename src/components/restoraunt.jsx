@@ -14,13 +14,25 @@ const Resto = () => {
             axios.get('http://backrestoraunt?for=event')
             .then(resp=>SetEvents(resp.data))
         }, [])
-        
+
+// -------------------parralax-------------------
+
+        const [offsetY, setOffsetY] = useState(0);
+  const handleScroll = () => setOffsetY(window.pageYOffset);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
 
     return(
         <div className='resto'>
             <div className='start'>
-                <img className='resto3' src={resto3} alt="img" />
+                <div className="resto3">
+                <img src={resto3} alt="img" style={{ transform: `translateY(${offsetY * 0.1}px)`}}/>
+                </div>
                 <span className='title'>
                     <h1>Май</h1>
                     <span>Ресторан для ценителей русской, европейской и средиземноморской кухни. Это заведение прекрасно подходит как для деловых обедов, так и для семейных праздников.<br/> «Май» – место, где можно приятно провести вечер, сполна наслаждаясь хорошим обществом и вкусными блюдами.</span>

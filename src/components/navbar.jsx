@@ -7,6 +7,7 @@ import Resto from './restoraunt';
 import Polit from './polit';
 import Useful from './useful';
 import Body from './body';
+import Menu from './menu';
 
 const NavBar = () => {
 
@@ -58,7 +59,7 @@ const NavBar = () => {
         <BrowserRouter>
             <nav>
                 <Link className='nav-item w' to='/restoraunt' onMouseOver={resto}>Ресторан</Link>
-                <Link className='nav-item w' href='' onMouseOver={menu}>Меню</Link>
+                <Link className='nav-item w' to='/menu' onMouseOver={menu}>Меню</Link>
                 <Link className='nav-item w logo' to='/body' onMouseOver={resetPanel}>
                     <img src={logo} width={60} alt="logo" />
                     <span>Май</span>
@@ -82,6 +83,7 @@ const NavBar = () => {
                 <Route path='/body' element={<Body/>}/>
                 <Route path='/contacts' element={<Contacts/>}/>
                 <Route path='/restoraunt' element={<Resto/>}/>
+                <Route path='/menu' element={<Menu/>}/>
                 <Route path='/useful' element={<Useful/>}/>
                 
                     
