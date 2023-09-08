@@ -8,6 +8,9 @@ import Polit from './polit';
 import Useful from './useful';
 import Body from './body';
 import Menu from './menu';
+import Kitchen from './kitchen';
+import WineCard from './wineCard';
+import Breakfast from './breakfast';
 
 const NavBar = () => {
 
@@ -32,12 +35,12 @@ const NavBar = () => {
         SetPanel({
             onMouseOvery: menu,
             div: [
-            {title:'Кухня', LinkTo: '/'}, 
+            {title:'Кухня', LinkTo: '/kitchen'}, 
             {title:'Специальное предложение', LinkTo: '/'},
-            {title: 'Завтраки',LinkTo: '/'},
-            {title:'Винная карта', LinkTo: '/'},
+            {title: 'Завтраки',LinkTo: '/breakfast'},
+            {title:'Винная карта', LinkTo: '/wine-card'},
             {title: 'Бар', LinkTo: '/'},
-            {title: 'Банктное меню', LinkTo: '/'}]
+            {title: 'Банкетное меню', LinkTo: '/'}]
         })
     }
 
@@ -85,7 +88,9 @@ const NavBar = () => {
                 <Route path='/restoraunt' element={<Resto/>}/>
                 <Route path='/menu' element={<Menu/>}/>
                 <Route path='/useful' element={<Useful/>}/>
-                
+                <Route path='/kitchen' element={<Kitchen/>}/>
+                <Route path='/wine-card' element={<WineCard/>}/>
+                <Route path='/breakfast' element={<Breakfast/>}/>
                     
                 <Route path='/qwertyuiop' element={<Polit/>}/>
             </Routes>

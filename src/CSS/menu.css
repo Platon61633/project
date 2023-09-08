@@ -1,22 +1,84 @@
 .menu{
-    margin-top: 100px;
-    color: white;
+    padding-top: 100px;
+    height: 1200px;
+    background: url(../imagin/franch.webp);
 }
-.ramka{
-    max-height: 1000px;
-    overflow: hidden;
-}
-  .tet{
-    position: relative;
-    z-index: 2;
-  }
 
-  .menu img{
-    position: relative;
-    min-height: 1200px;
+.cards-menu{
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+.w-back{
+  background-color: white;
+  transition: all 1s;
+}
+.card-menu{
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  width: 30vw;
+  font-size: 3rem;
+  opacity: .6;
+  transition: all 1s;
+}
+
+.card-menu p{
+  display: flex;
+  height: 700px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-of-wine-Img{
+  background: url(../imagin/card_of_wine.webp) no-repeat;
+}
+.kitchen-Img{
+  background: url(../imagin/kitchen2.webp) no-repeat;
+}
+.breakfast-Img{
+  background: url(../imagin/breackfast.webp) no-repeat;
+}
+
+.card-of-wine-Img::after{
+  content: 'Винная карта';
+}
+.kitchen-Img::after{
+  content: 'Кухня';
+}
+.breakfast-Img::after{
+  content: 'Завтраки';
+}
+
+.w-back:hover{
+  background-color: transparent;
+}
+
+.card-menu:hover{
+  background-color: transparent;
+  z-index: 10;
+  opacity: 1;
+  scale: 1.05;
+}
+
+@media  (max-width: 800px){
+  .cards-menu{
+    flex-direction: column;
   }
-.background{
-    position: relative;
-    min-height: 1200px;
-    background: url('../imagin/resto.jpg');
+  .card-menu{
+    width: 70vw;
+  }
+  .card-menu p{
+    height: 300px;
+  }
+}
+
+/* ----------------------kitchen-------------------- */
+.kitchen{
+  padding-top: 100px;
+  color: white;
 }
