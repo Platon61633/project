@@ -46,12 +46,11 @@ const Resto = () => {
             <div className='events'>
                {Events.map(e=>
                 <div className='event'>
-                    {e[0]%2===0 ? <p></p> : <img src={e[3]} alt='img'/>}
+                    <img src={e[3]} alt='img'/>
                     <p>
                         <span>{e[1]}</span>
                         <h1>{e[2]}</h1>
                     </p>
-                    {e[0]%2===0 ? <img src={e[3]} alt='img'/> : <p></p>}
                 </div>
                )}
             </div>

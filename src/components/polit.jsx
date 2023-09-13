@@ -8,9 +8,12 @@ import pencil from '../imagin/cil-pencil.svg';
 const Polit = () => {
 
     const [Inp, SetInp] = useState({name: '', desc: '', img: '', date: '', time: '', num:''})
-    const [Useful, SetUseful] = useState([])
 
-    const [PolEvents, SetEvents] = useState([])
+    const [ArrUseful, SetArrUseful] = useState([])
+    const [ArrEvents, SetArrEvents] = useState([])
+    const [ArrKitchen, SetArrKitchen] = useState([])
+
+
     const [fixFE, SetFixFE] = useState(false)
     const [fixFU, SetFixFU] = useState(false)
 
@@ -25,9 +28,11 @@ const Polit = () => {
 
     useEffect(function GetPosts() {
         axios.get('http://backrestoraunt?for=event')
-        .then(resp=>SetEvents(resp.data))
+        .then(rsp=>SetArrEvents(rsp.data))
         axios.get('http://backrestoraunt?for=useful')
-        .then(rsp=> SetUseful(rsp.data))
+        .then(rsp=> SetArrUseful(rsp.data))
+        axios.get('http://backrestoraunt?for=kitchen')
+        .then(rsp=> SetArrKitchen(rsp.data))
     }, [])
 
 
@@ -58,7 +63,7 @@ const Polit = () => {
                 .then(r=>Operatation(r.data))
                 break;
             default:
-                console.log('тип'+type+'не найден');
+                console.log('тип '+type+' не найден');
                 break;
         }
         // window.location.reload()
@@ -66,20 +71,20 @@ const Polit = () => {
 
     const fixPostE = (id)=>{
         let i = 0
-        while (id!==PolEvents[i][0]) {
+        while (id!==ArrEvents[i][0]) {
         i+=1
         }
-        SetInp({name: PolEvents[i][1], desc: PolEvents[i][2], img: PolEvents[i][3]})
+        SetInp({name: ArrEvents[i][1], desc: ArrEvents[i][2], img: ArrEvents[i][3]})
         SetFixId(id)
         SetFixFE(true)
     }
 
     const fixPostU = (id)=>{
         let i = 0
-        while (id!==Useful[i][0]) {
+        while (id!==ArrUseful[i][0]) {
         i+=1
         }
-        SetInp({name: Useful[i][1], date: Useful[i][2], desc: Useful[i][3], time: Useful[i][4], num: Useful[i][5]})
+        SetInp({name: ArrUseful[i][1], date: ArrUseful[i][2], desc: ArrUseful[i][3], time: ArrUseful[i][4], num: ArrUseful[i][5]})
         SetFixId(id)
         SetFixFU(true)
     }
@@ -137,7 +142,7 @@ const Polit = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {Useful.map(e=>
+                        {ArrUseful.map(e=>
                             <tr>
                             <td>{e[0]}</td>
                             <td>{e[1]}</td>
@@ -219,7 +224,80 @@ const Polit = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {PolEvents.map(e=>
+                        {ArrEvents.map(e=>
+                            <tr>
+                            <td>{e[0]}</td>
+                            <td>{e[1]}</td>
+                            <td for='length'>{e[2]}</td>
+                            <td>
+                                <img src={e[3]} width={300} alt="Картинка" />
+                            </td>
+                            <td onClick={()=>dlt(e[0], 'event')}><img src={close} className='cursor-p' alt="Картинка"   /></td>
+                            <td className='cursor-p' onClick={()=>fixPostE(e[0])}><u><i>Изменить</i></u></td>
+                            </tr>
+                        )}
+                        <tr>
+                            <td>№</td>
+                            <td><textarea placeholder='имя' type="text" onChange={e=> SetInp({...Inp, name: e.target.value})}/></td>
+                            <td><textarea placeholder='описание' type="text" onChange={e=> SetInp({...Inp, desc: e.target.value})}/></td>
+                            <td><textarea placeholder='фото (url)' type="text" onChange={e=> SetInp({...Inp, img: e.target.value})}/></td>
+                            <td colSpan={2}></td>
+                        </tr>
+                        <tr>
+                        <th colSpan={6}><button className='cursor-p' onClick={()=>creatEvent('event')}>Создать...</button></th>
+                        </tr></tbody>
+                </table>
+                {fixFE ? 
+                <div onClick={()=>SetFixFE(false)} className='BackfixPanel'>
+                    <div onClick={(e)=>e.stopPropagation()} className='fixPanel'>
+                        <table>
+                            <thead>
+                                <th>id</th>
+                                <th>имя</th>
+                                <th>описание</th>
+                                <th>фото</th>
+                            </thead>
+                            <tbody>
+                                <td>{FixId}</td>
+                                <td>
+                                    <textarea placeholder='имя' value={Inp.name} type="text" onChange={e=> SetInp({...Inp, name: e.target.value})}/>
+                                </td>
+                                <td>
+                                    <textarea placeholder='описание' value={Inp.desc} type="text" onChange={e=> SetInp({...Inp, desc: e.target.value})}/>
+                                </td>
+                                <td>
+                                    <textarea placeholder='фото' value={Inp.img} type="text" onChange={e=> SetInp({...Inp, img: e.target.value})}/>
+                                </td>
+                                <tr> <th colSpan={4} className='cursor-p' onClick={()=>DoFix('event')}>Изменить</th></tr>
+                                <tr> <th colSpan={4} className='cursor-p' onClick={()=>SetFixFE(false)}>Назад</th></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                :
+                <div></div>}
+            </div>
+
+            {/* -------------------MENU------------------------ */}
+            <div className='tbl' ref={events}>
+                <table>
+                    <thead>
+                        <tr>
+                            <th colSpan={8}>МЕНЮ</th>
+                        </tr>
+                        <tr>
+                            <th>id</th>
+                            <th>тип</th>
+                            <th>имя</th>
+                            <th>описание</th>
+                            <th>вес</th>
+                            <th>цена</th>
+                            <th><img src={trash} alt="Закрыть" width={30} /></th>
+                            <th><img src={pencil} alt="Удалить" width={30}/></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {ArrEvents.map(e=>
                             <tr>
                             <td>{e[0]}</td>
                             <td>{e[1]}</td>

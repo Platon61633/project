@@ -1,3 +1,13 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Ysabeau+Infant:ital,wght@1,500&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+Infant:wght@500&display=swap');
+
+img{
+    background-position: center center;
+}
+
+*{
+    font-family: 'Ysabeau Infant', sans-serif;
+}
 .b{
     color: rgb(0, 0, 0);
     text-decoration: none;

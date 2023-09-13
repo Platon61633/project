@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../CSS/menu.css';
 
-const Menu = () => {
+const Menu = ({SetKitchen}) => {
 
-
+// ---------------3D-card--------------------------------
   const cards = document.querySelectorAll('.card-menu');
 
   for (let i = 0; i < cards.length; i++) {
@@ -22,25 +22,29 @@ const Menu = () => {
   const cardItem = this.querySelector('.card-menu p');
   cardItem.style.transform = 'rotate(0)';
   }
+  // --------------------menu Setting---------------------------------------
+
+
+
     return(
         <div className='menu'>
       <div className="cards-menu">
         <div className="w-back">
           <div className="card-menu">
-            <Link to='/kitchen' className='w'><p className='kitchen-Img'></p></Link>
+            <Link to='/kitchen' onClick={()=>SetKitchen('kitchen')} className='w'><p className='kitchen-Img'></p></Link>
           </div>
         </div>
         <div className="w-back">
           <div className="card-menu">
-            <Link to='/breakfast' className='w'><p className='breakfast-Img'></p></Link>
+            <Link to='/kitchen' onClick={()=>SetKitchen('breakfast')} className='w'><p className='breakfast-Img'></p></Link>
           </div>
         </div>
         <div className="w-back">
             <div className="card-menu">
-              <Link to='/wine-card' className='w'><p className='card-of-wine-Img'></p></Link>
+              <Link to='/kitchen' onClick={()=>SetKitchen('bar')} className='w'><p className='card-of-wine-Img'></p></Link>
             </div>
         </div> 
-      </div>     
+      </div>  
         </div>
     );
 };

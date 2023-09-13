@@ -1,19 +1,81 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
-const Kitchen = () => {
+
+
+
+
+const Kitcheny = ({Kitchen}) => {
+
+    const [PanelKitchen, SetPanelKitchen] = useState(['ЗАКУСКИ', 'ОСНОВНОЕ БЛЮДО', 'САЛАТЫ', 'СУПЫ', 'ДЕСЕРТ', 'НАПИТКИ'])
+
+    const [GotKitchen, SetGotKitchen] = useState([])
+    
+    const GetKichen = async (e) => {
+            await axios.get('http://backrestoraunt?for=kitchen&type='+e)
+            .then(rsp=> SetGotKitchen(rsp.data))
+    }
+
+
+    useEffect(()=>{
+
+    
+
+    switch (Kitchen[0]) {
+        case 'kitchen':
+            GetKichen('ЗАКУСКИ')
+            SetPanelKitchen([
+                'ЗАКУСКИ', 'ОСНОВНОЕ БЛЮДО', 'САЛАТЫ', 'СУПЫ', 'ДЕСЕРТ'
+            ])
+            break;
+
+        case 'bar':
+            GetKichen('ГОРЯЧИЕ НАПИТКИ')
+            SetPanelKitchen([
+                'ГОРЯЧИЕ НАПИТКИ', 'БЕЗАЛКОГОЛЬНЫЕ НАПИТКИ', 'АЛКОГОЛЬНЫЕ НАПИТКИ'
+            ])
+            break;
+
+        case 'breakfast':
+            GetKichen('СЛАДКОЕ')
+            SetPanelKitchen([
+                'СЛАДКОЕ', 
+                'НЕ СЛАДКОЕ'
+            ])
+            break;
+}}, [Kitchen[0]])
+
+
+
     return(
         <div className='kitchen'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores molestias ea error quia ipsam quam consectetur enim quaerat ut, vero rerum tenetur quos iusto ratione repellat nihil! In, aut libero.
-            Impedit, molestias aspernatur neque cumque ex dignissimos voluptatum, obcaecati aliquid sint quia recusandae ratione! Aperiam a, corrupti nobis mollitia optio iure officiis corporis ratione natus placeat. Maxime mollitia quos nisi!
-            Laudantium libero corporis dicta voluptates sunt, ducimus quaerat expedita eos officiis at distinctio assumenda, quae possimus nihil, laboriosam enim odit hic iure a fuga eveniet neque reiciendis dolor? Velit, omnis.
-            Maiores, tempore tenetur magnam impedit perferendis voluptatibus quia nostrum sapiente iusto, eos error rem earum repudiandae neque incidunt, ipsa expedita optio. Laudantium nisi nam blanditiis fugit exercitationem, autem quibusdam perspiciatis.
-            Consequatur unde culpa cum assumenda repellat nam numquam animi eos? Cumque veniam ratione nesciunt ducimus, obcaecati natus optio quibusdam provident illum deleniti quisquam perspiciatis, tempore voluptas corrupti aperiam dolorum consequatur.
-            Quas ratione velit tempora neque expedita, earum aut labore dignissimos aspernatur repellendus minus quis quaerat nobis iste omnis similique recusandae quo eligendi alias molestias sit adipisci blanditiis. Molestias, blanditiis eius.
-            Autem odio aliquam rem similique assumenda modi doloribus vel, officiis sit hic laudantium esse dignissimos culpa cupiditate totam? Laboriosam repellendus accusantium sint numquam earum ut, minus saepe explicabo adipisci magnam?
-            Id molestiae repellat laudantium provident esse. Error quo perspiciatis aperiam doloribus nam quas expedita voluptatibus dolorum velit id veritatis modi, praesentium a nisi cupiditate mollitia voluptates corrupti debitis? Numquam, repellat.
-            Fugiat, odit reiciendis quam sapiente ipsam quasi itaque adipisci nobis molestiae architecto, non mollitia aperiam distinctio quibusdam. A, natus, minus facere molestias quos soluta unde harum, doloremque cum reiciendis nisi?
+            <p className='head-k'>
+                <span>МЕНЮ</span><br />
+                НАШЕГО РЕСТОРАНА
+            </p>
+            <div className="panel-kitchen">
+
+            {PanelKitchen.map(
+                e =>
+                <div className="panel-kitchen-item" onClick={()=>GetKichen(e)}>{e}</div>
+            )}
+            </div>
+
+            <div className="kitchen-menu">
+                {GotKitchen.map(e=>
+                <div className='kitchen-menu-item'>
+                    <div>
+                        <h1>{e[2]}</h1>
+                        <p>{e[3]}</p>
+                    </div>
+                    <div>
+                        {e[4]}г, {e[5]}руб
+                    </div>
+                </div>
+                 )}
+            </div>
         </div>
     );
 };
 
-export default Kitchen
+export default Kitcheny

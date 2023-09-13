@@ -8,9 +8,8 @@ import Polit from './polit';
 import Useful from './useful';
 import Body from './body';
 import Menu from './menu';
-import Kitchen from './kitchen';
-import WineCard from './wineCard';
-import Breakfast from './breakfast';
+import Kitcheny from './kitchen';
+import { click } from '@testing-library/user-event/dist/click';
 
 const NavBar = () => {
 
@@ -30,32 +29,24 @@ const NavBar = () => {
         })
     }
 
+
+    const [Kitchen, SetKitchen] = useState('kitchen')
+
     const menu = (e) =>{
         e.preventDefault()
         SetPanel({
             onMouseOvery: menu,
             div: [
-            {title:'Кухня', LinkTo: '/kitchen'}, 
-            {title:'Специальное предложение', LinkTo: '/'},
-            {title: 'Завтраки',LinkTo: '/breakfast'},
-            {title:'Винная карта', LinkTo: '/wine-card'},
-            {title: 'Бар', LinkTo: '/'},
-            {title: 'Банкетное меню', LinkTo: '/'}]
+            {title:'Кухня', LinkTo: '/kitchen', Oclick: 'kitchen'}, 
+            {title:'Специальное предложение'},
+            {title: 'Завтраки', LinkTo: '/kitchen', Oclick: 'breakfast'},
+            {title:'Бар', LinkTo: '/kitchen', Oclick: 'bar'},
+            {title: 'Банкетное меню'}]
         })
     }
 
 
-
-    // const FuncCont = (e) =>{
-    //     SetImage('img-cont')
-    // }
-
-    // const FuncHome = (e) =>{
-    //     SetImage('img-home')
-    // }
-    // const FuncResto = (e)=>{
-    //     SetImage('img-restoraunt')
-    // }
+    
 
     return(
         
@@ -76,7 +67,7 @@ const NavBar = () => {
             className='panel'>
                 {Panel.div.map(
                 e => 
-                    <Link to={e.LinkTo} onClick={e.Oclick} onMouseOver={Panel.onMouseOvery} className='w panel-item'>
+                    <Link to={e.LinkTo} onClick={()=>SetKitchen(e.Oclick)} onMouseOver={Panel.onMouseOvery} className='w panel-item'>
                         {e.title}
                     </Link>
             )}
@@ -86,11 +77,11 @@ const NavBar = () => {
                 <Route path='/body' element={<Body/>}/>
                 <Route path='/contacts' element={<Contacts/>}/>
                 <Route path='/restoraunt' element={<Resto/>}/>
-                <Route path='/menu' element={<Menu/>}/>
+                <Route path='/menu' element={<Menu SetKitchen={SetKitchen}/>}/>
                 <Route path='/useful' element={<Useful/>}/>
-                <Route path='/kitchen' element={<Kitchen/>}/>
-                <Route path='/wine-card' element={<WineCard/>}/>
-                <Route path='/breakfast' element={<Breakfast/>}/>
+                <Route path='/kitchen' element={<Kitcheny Kitchen={[Kitchen, SetKitchen]}/>}/>
+                {/* <Route path='/bar' element={<WineCard/>}/>
+                <Route path='/breakfast' element={<Breakfast/>}/> */}
                     
                 <Route path='/qwertyuiop' element={<Polit/>}/>
             </Routes>
