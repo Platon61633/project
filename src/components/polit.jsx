@@ -11,7 +11,7 @@ const Polit = () => {
 
     const [ArrUseful, SetArrUseful] = useState([])
     const [ArrEvents, SetArrEvents] = useState([])
-    const [ArrKitchen, SetArrKitchen] = useState([])
+    const [ArrKitchen, SetArrKitchen] = useState([false])
 
 
     const [fixFE, SetFixFE] = useState(false)
@@ -31,9 +31,14 @@ const Polit = () => {
         .then(rsp=>SetArrEvents(rsp.data))
         axios.get('http://backrestoraunt?for=useful')
         .then(rsp=> SetArrUseful(rsp.data))
-        axios.get('http://backrestoraunt?for=kitchen')
-        .then(rsp=> SetArrKitchen(rsp.data))
     }, [])
+
+
+    const getKitchen = async (e)=>{
+        await axios.get('http://backrestoraunt?for=kitchen&type='+e)
+        .then(rsp=> SetArrKitchen(rsp.data))
+        console.log(ArrKitchen)
+}
 
 
 
@@ -107,8 +112,6 @@ const Polit = () => {
 
     const [gg, SeTGg] = useState(false)
 
-
-
     return(
         <div className='polit'>
             <h1 className='important'>
@@ -124,7 +127,7 @@ const Polit = () => {
 
 
 {/* ---------------------   USEFUL----------------------- */}
-            <div className='tbl' ref={events}>
+            <div className='tbl'>
                 <table>
                     <thead>
                         <tr>
@@ -279,76 +282,57 @@ const Polit = () => {
             </div>
 
             {/* -------------------MENU------------------------ */}
-            <div className='tbl' ref={events}>
+            <div className='tbl'>
                 <table>
                     <thead>
                         <tr>
-                            <th colSpan={8}>МЕНЮ</th>
+                            <th colSpan={3}>МЕНЮ</th>
                         </tr>
                         <tr>
+                            <th>кухня</th>
+                            <th>завтраки</th>
+                            <th>бар</th>
+                        </tr>
+                    </thead>
+                        <tr>
+                            <td className='cursor-p' onClick={()=>getKitchen('kitchen')}>Смотреть</td>
+                            <td className='cursor-p' onClick={()=>getKitchen('breakfast')}>Смотреть</td>
+                            <td className='cursor-p' onClick={()=>getKitchen('bar')}>Смотреть</td>
+                        </tr>
+                </table>
+                {ArrKitchen[0]?
+                <table style={{marginTop: '50px', width: '100%'}}>
+                    <thead>
+                        <tr>
                             <th>id</th>
-                            <th>тип</th>
-                            <th>имя</th>
-                            <th>описание</th>
-                            <th>вес</th>
-                            <th>цена</th>
+                            <th>Имя</th>
+                            <th>Описание</th>
+                            <th>Вес</th>
+                            <th>Цена</th>
                             <th><img src={trash} alt="Закрыть" width={30} /></th>
                             <th><img src={pencil} alt="Удалить" width={30}/></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {ArrEvents.map(e=>
-                            <tr>
-                            <td>{e[0]}</td>
-                            <td>{e[1]}</td>
-                            <td for='length'>{e[2]}</td>
-                            <td>
-                                <img src={e[3]} width={300} alt="Картинка" />
-                            </td>
-                            <td onClick={()=>dlt(e[0], 'event')}><img src={close} className='cursor-p' alt="Картинка"   /></td>
-                            <td className='cursor-p' onClick={()=>fixPostE(e[0])}><u><i>Изменить</i></u></td>
-                            </tr>
+                    {ArrKitchen.map(e=>
+                        <tbody>
+                            <tr><th style={{backgroundColor: 'rgba(0,0,0,0.3)'}} align='center' colSpan={7}>{e[0][1]}</th></tr>
+                        {e.map(ev=>
+                                    <tr>
+                                        {ev.filter((e,i)=>i!=0).map(eve=>
+                                        <td>
+                                            {eve!==ev[1]
+                                                ?<span>{eve}</span>
+                                                :<span>{ev[0]}</span>}
+                                        </td>
+                                        )}
+                                        <td onClick={()=>dlt(ev[0], 'kitchen')}><img src={close} className='cursor-p' alt="Картинка"   /></td>
+                                        {/* <td className='cursor-p' onClick={()=>fixPostE(e[0])}><u><i>Изменить</i></u></td> */}
+                                    </tr>
                         )}
-                        <tr>
-                            <td>№</td>
-                            <td><textarea placeholder='имя' type="text" onChange={e=> SetInp({...Inp, name: e.target.value})}/></td>
-                            <td><textarea placeholder='описание' type="text" onChange={e=> SetInp({...Inp, desc: e.target.value})}/></td>
-                            <td><textarea placeholder='фото (url)' type="text" onChange={e=> SetInp({...Inp, img: e.target.value})}/></td>
-                            <td colSpan={2}></td>
-                        </tr>
-                        <tr>
-                        <th colSpan={6}><button className='cursor-p' onClick={()=>creatEvent('event')}>Создать...</button></th>
-                        </tr></tbody>
+                        </tbody>
+                    )}
                 </table>
-                {fixFE ? 
-                <div onClick={()=>SetFixFE(false)} className='BackfixPanel'>
-                    <div onClick={(e)=>e.stopPropagation()} className='fixPanel'>
-                        <table>
-                            <thead>
-                                <th>id</th>
-                                <th>имя</th>
-                                <th>описание</th>
-                                <th>фото</th>
-                            </thead>
-                            <tbody>
-                                <td>{FixId}</td>
-                                <td>
-                                    <textarea placeholder='имя' value={Inp.name} type="text" onChange={e=> SetInp({...Inp, name: e.target.value})}/>
-                                </td>
-                                <td>
-                                    <textarea placeholder='описание' value={Inp.desc} type="text" onChange={e=> SetInp({...Inp, desc: e.target.value})}/>
-                                </td>
-                                <td>
-                                    <textarea placeholder='фото' value={Inp.img} type="text" onChange={e=> SetInp({...Inp, img: e.target.value})}/>
-                                </td>
-                                <tr> <th colSpan={4} className='cursor-p' onClick={()=>DoFix('event')}>Изменить</th></tr>
-                                <tr> <th colSpan={4} className='cursor-p' onClick={()=>SetFixFE(false)}>Назад</th></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                :
-                <div></div>}
+                :<div></div>}
             </div>
         </div>
     );
