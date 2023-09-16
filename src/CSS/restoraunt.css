@@ -215,6 +215,11 @@
     height: 500px;
 }
 
+textarea [placeholder=ТИП]{
+    font-size: 3em;
+}
+
+
 
 
 @media  (max-width: 800px){

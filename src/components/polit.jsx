@@ -7,7 +7,7 @@ import pencil from '../imagin/cil-pencil.svg';
 
 const Polit = () => {
 
-    const [Inp, SetInp] = useState({name: '', desc: '', img: '', date: '', time: '', num:''})
+    const [Inp, SetInp] = useState({name: '', desc: '', weight: '', price: '', img: '', date: '', time: '', num:'', type: ''})
 
     const [ArrUseful, SetArrUseful] = useState([])
     const [ArrEvents, SetArrEvents] = useState([])
@@ -16,13 +16,28 @@ const Polit = () => {
 
     const [fixFE, SetFixFE] = useState(false)
     const [fixFU, SetFixFU] = useState(false)
+    const [fixFM, SetFixFM] = useState(false)
+
 
     const [FixId, SetFixId] = useState(null)
 
     const events = useRef(null);
-    const GoEvents = (e)=>{
-        events.current?.scrollIntoView({behavior: 'smooth'});
+    const menu = useRef(null);
+
+
+    const Go = (type)=>{
+        switch (type) {
+            case 'events':
+                events.current?.scrollIntoView({behavior: 'smooth'});
+                break;
+        
+            case 'menu':
+                menu.current?.scrollIntoView({behavior: 'smooth'});
+                break;
+        }
+        
     }
+
 
     
 
@@ -59,48 +74,72 @@ const Polit = () => {
     const creatEvent = async (type)=>{
         switch (type) {
             case 'event':
-                await axios.post('http://backrestoraunt?for=event',JSON.stringify([Inp.name, Inp.desc, Inp.img]))
+                await axios.post('http://backrestoraunt?for='+type,JSON.stringify([Inp.name, Inp.desc, Inp.img]))
                 .then(r=>Operatation(r.data))
                 
                 break;
             case 'useful':
-                await axios.post('http://backrestoraunt?for=useful',JSON.stringify([Inp.name,  Inp.date, Inp.desc, Inp.time, Inp.num]))
+                await axios.post('http://backrestoraunt?for='+type,JSON.stringify([Inp.name, Inp.type, Inp.date, Inp.desc, Inp.time, Inp.num]))
+                .then(r=>Operatation(r.data))
+                break;
+            case 'kitchen':
+                await axios.post('http://backrestoraunt?for='+type,JSON.stringify([Inp.type, Inp.name,  Inp.desc, Inp.weight, Inp.price]))
                 .then(r=>Operatation(r.data))
                 break;
             default:
                 console.log('тип '+type+' не найден');
                 break;
         }
-        // window.location.reload()
+        window.location.reload()
     }
 
-    const fixPostE = (id)=>{
+
+    const fixPost = (id, type)=>{
         let i = 0
-        while (id!==ArrEvents[i][0]) {
-        i+=1
+        switch (type) {
+            case 'U':
+                
+                while (id!==ArrUseful[i][0]) {
+                i+=1
+                }
+                SetInp({name: ArrUseful[i][1], date: ArrUseful[i][2], desc: ArrUseful[i][3], time: ArrUseful[i][4], num: ArrUseful[i][5]})
+                SetFixId(id)
+                SetFixFU(true)
+                break;
+            case 'E':
+                while (id!==ArrEvents[i][0]) {
+                i+=1
+                }
+                SetInp({name: ArrEvents[i][1], desc: ArrEvents[i][2], img: ArrEvents[i][3]})
+                SetFixId(id)
+                SetFixFE(true)
+                break;
+            case 'M':
+                while (id!==ArrKitchen[i][0][0]) {
+                i+=1
+                }
+                SetInp({name: ArrKitchen[i][0][2], desc: ArrKitchen[i][0][3], weight: ArrKitchen[i][0][4], price: ArrKitchen[i][0][5]})
+                SetFixId(id)
+                SetFixFM(true)
+                break;
+        
+            default:
+                break;
         }
-        SetInp({name: ArrEvents[i][1], desc: ArrEvents[i][2], img: ArrEvents[i][3]})
-        SetFixId(id)
-        SetFixFE(true)
     }
 
-    const fixPostU = (id)=>{
-        let i = 0
-        while (id!==ArrUseful[i][0]) {
-        i+=1
-        }
-        SetInp({name: ArrUseful[i][1], date: ArrUseful[i][2], desc: ArrUseful[i][3], time: ArrUseful[i][4], num: ArrUseful[i][5]})
-        SetFixId(id)
-        SetFixFU(true)
-    }
+
 
     const DoFix = async (type)=>{
         switch (type) {
             case 'useful':
-                await axios.patch('http://backrestoraunt?for=useful',JSON.stringify([FixId, Inp.name, Inp.date, Inp.desc, Inp.time, Inp.num]))
+                await axios.patch('http://backrestoraunt?for='+type,JSON.stringify([FixId, Inp.name, Inp.date, Inp.desc, Inp.time, Inp.num]))
                 break;
             case 'event':
-                await axios.patch('http://backrestoraunt?for=event',JSON.stringify([FixId, Inp.name, Inp.desc, Inp.img]))
+                await axios.patch('http://backrestoraunt?for='+type,JSON.stringify([FixId, Inp.name, Inp.desc, Inp.img]))
+                break;
+            case 'kitchen':
+                await axios.patch('http://backrestoraunt?for='+type,JSON.stringify([FixId, Inp.name, Inp.desc, Inp.weight, Inp.price]))
                 break;
             default:
                 console.log('тип'+type+'не найден');
@@ -115,8 +154,8 @@ const Polit = () => {
     return(
         <div className='polit'>
             <h1 className='important'>
-                <div onClick={GoEvents}>АНОНСЫ И СОБЫТИЯ</div>
-                <div>МЕНЮ</div>
+                <div onClick={()=>Go('events')}>АНОНСЫ И СОБЫТИЯ</div>
+                <div onClick={()=>Go('menu')}>МЕНЮ</div>
             </h1>
             {gg?
             <div className='panlOP' onClick={()=>SeTGg(false)}>
@@ -154,7 +193,7 @@ const Polit = () => {
                             <td>{e[4]}</td>
                             <td>{e[5]}</td>
                             <td onClick={()=>dlt(e[0], 'useful')}><img src={close} className='cursor-p' alt="Удалить"   /></td>
-                            <td className='cursor-p' onClick={()=>fixPostU(e[0])}><u><i>Изменить</i></u></td>
+                            <td className='cursor-p' onClick={()=>fixPost(e[0], 'U')}><u><i>Изменить</i></u></td>
                             </tr>
                         )}
                         <tr>
@@ -236,7 +275,7 @@ const Polit = () => {
                                 <img src={e[3]} width={300} alt="Картинка" />
                             </td>
                             <td onClick={()=>dlt(e[0], 'event')}><img src={close} className='cursor-p' alt="Картинка"   /></td>
-                            <td className='cursor-p' onClick={()=>fixPostE(e[0])}><u><i>Изменить</i></u></td>
+                            <td className='cursor-p' onClick={()=>fixPost(e[0], 'E')}><u><i>Изменить</i></u></td>
                             </tr>
                         )}
                         <tr>
@@ -282,7 +321,7 @@ const Polit = () => {
             </div>
 
             {/* -------------------MENU------------------------ */}
-            <div className='tbl'>
+            <div className='tbl' ref={menu}>
                 <table>
                     <thead>
                         <tr>
@@ -303,7 +342,6 @@ const Polit = () => {
                 {ArrKitchen[0]?
                 <table style={{marginTop: '50px', width: '100%'}}>
                     <thead>
-                        <tr>
                             <th>id</th>
                             <th>Имя</th>
                             <th>Описание</th>
@@ -311,28 +349,85 @@ const Polit = () => {
                             <th>Цена</th>
                             <th><img src={trash} alt="Закрыть" width={30} /></th>
                             <th><img src={pencil} alt="Удалить" width={30}/></th>
-                        </tr>
                     </thead>
                     {ArrKitchen.map(e=>
                         <tbody>
                             <tr><th style={{backgroundColor: 'rgba(0,0,0,0.3)'}} align='center' colSpan={7}>{e[0][1]}</th></tr>
                         {e.map(ev=>
                                     <tr>
-                                        {ev.filter((e,i)=>i!=0).map(eve=>
+                                        {ev.filter((e,i)=>i!=1).map(eve=>
                                         <td>
-                                            {eve!==ev[1]
-                                                ?<span>{eve}</span>
-                                                :<span>{ev[0]}</span>}
+                                            {eve}
                                         </td>
                                         )}
                                         <td onClick={()=>dlt(ev[0], 'kitchen')}><img src={close} className='cursor-p' alt="Картинка"   /></td>
-                                        {/* <td className='cursor-p' onClick={()=>fixPostE(e[0])}><u><i>Изменить</i></u></td> */}
+                                        <td className='cursor-p' onClick={()=>fixPost(ev[0], 'M')}><u><i>Изменить</i></u></td>
                                     </tr>
                         )}
                         </tbody>
                     )}
+                    <tr style={{backgroundColor: 'rgba(0,0,0,0.3)'}}><td colSpan={7}></td></tr>
+                    <tr><td style={{textAlign: 'center'}} colSpan={7}>
+                        Выберите тип
+                        <select style={{fontSize: '1.1em'}} onChange={e => SetInp({...Inp, type: e.target.value})}>
+                            <option disabled value=''>Выберите тип</option>
+                            {ArrKitchen.map(e=>
+                                <option value={e[0][1]}>{e[0][1]}</option>)}
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                            <td>№</td>
+                            <td>
+                                <textarea placeholder='имя' value={Inp.name} type="text" onChange={e=> SetInp({...Inp, name: e.target.value})}/>
+                            </td>
+                            <td>
+                                <textarea placeholder='описание' value={Inp.desc} type="text" onChange={e=> SetInp({...Inp, desc: e.target.value})}/>
+                            </td>
+                            <td>
+                                <textarea placeholder='вес' value={Inp.weight} type="text" onChange={e=> SetInp({...Inp, weight: e.target.value})}/>
+                            </td>
+                            <td>
+                                <textarea placeholder='цена' value={Inp.price} type="text" onChange={e=> SetInp({...Inp, price: e.target.value})}/>
+                            </td>
+                            <td colSpan={2}></td>
+                        </tr>
+                    <th colSpan={7}><button className='cursor-p' onClick={()=>creatEvent('kitchen')}><b>Создать...</b></button></th>
                 </table>
                 :<div></div>}
+                {fixFM ? 
+                <div onClick={()=>SetFixFM(false)} className='BackfixPanel'>
+                    <div onClick={(e)=>e.stopPropagation()} className='fixPanel'>
+                        <table>
+                            <thead>
+                                <th>id</th>
+                                <th>Имя</th>
+                                <th>Описание</th>
+                                <th>Вес</th>
+                                <th>Цена</th>
+                            </thead>
+                            <tbody>
+                                <td>{FixId}</td>
+                                <td>
+                                    <textarea placeholder='имя' value={Inp.name} type="text" onChange={e=> SetInp({...Inp, name: e.target.value})}/>
+                                </td>
+                                <td>
+                                    <textarea placeholder='описание' value={Inp.desc} type="text" onChange={e=> SetInp({...Inp, desc: e.target.value})}/>
+                                </td>
+                                <td>
+                                    <textarea placeholder='вес' value={Inp.weight} type="text" onChange={e=> SetInp({...Inp, weight: e.target.value})}/>
+                                </td>
+                                <td>
+                                    <textarea placeholder='цена' value={Inp.price} type="text" onChange={e=> SetInp({...Inp, price: e.target.value})}/>
+                                </td>
+                                <tr> <th colSpan={5} className='cursor-p' onClick={()=>DoFix('kitchen')}>Изменить</th></tr>
+                                <tr> <th colSpan={5} className='cursor-p' onClick={()=>SetFixFM(false)}>Назад</th></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                :
+                <div></div>}
             </div>
         </div>
     );
