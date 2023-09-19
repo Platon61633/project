@@ -12,7 +12,7 @@ const Special = () => {
         ()=> {
             axios.get('https://qwerty--specialdesign77.repl.co/?for=event')
             .then(rsp=> console.log(rsp.data+'ffffff'))
-            console.log('y');
+            console.log('d');
         }, []
     )
 
