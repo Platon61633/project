@@ -26,6 +26,7 @@ const Special = () => {
                 <p>Цена: {e[3]}р - {e[4]}г</p>
             </div>
                 )}
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore libero nesciunt fugiat voluptatem. Amet dignissimos dolor nesciunt incidunt laborum numquam saepe repudiandae architecto perspiciatis, molestias autem magni at! Sed, soluta?
         </div>
     );
 };
