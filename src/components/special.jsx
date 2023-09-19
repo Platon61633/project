@@ -10,9 +10,8 @@ const Special = () => {
 
     useEffect(
         ()=> {
-            axios.get('https://qwerty--specialdesign77.repl.co/?for=event')
-            .then(rsp=> console.log(rsp.data+'ffffff'))
-            console.log('d');
+            axios.get('http://backrestoraunt?for=special')
+            .then(rsp=> ArrSpecial(rsp.data))
         }, []
     )
 
