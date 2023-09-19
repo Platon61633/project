@@ -12,7 +12,7 @@ const Special = () => {
         ()=> {
             axios.get('https://microincrediblecomputationallinguistics--specialdesign77.repl.co/?for=event')
             .then(rsp=> console.log(rsp.data+'ffffff'))
-            console.log('l');
+            console.log('y');
         }, []
     )
 
