@@ -32,15 +32,26 @@ const Kitcheny = ({Kitchen}) => {
         case 'bar':
             GetKichen('ГОРЯЧИЕ НАПИТКИ')
             SetPanelKitchen([
-                'ГОРЯЧИЕ НАПИТКИ', 'БЕЗАЛКОГОЛЬНЫЕ НАПИТКИ', 'АЛКОГОЛЬНЫЕ НАПИТКИ'
+                'КОФЕ', 
+                'ЧАЙ', 
+                'БЕЗАЛКОГОЛЬНЫЕ НАПИТКИ', 
+                'ВИНО', 
+                'ВИНО ИГРИСТОЕ', 
+                'КОКТЕЙЛИ', 
+                'ПИВО', 
+                'ВОДКА', 
+                'КОНЬЯК', 
+                'ВИСКИ', 
+                'БРЭНДИ', 
+                'ДЖИН', 
+                'РОМ'
             ])
             break;
 
-        case 'breakfast':
-            GetKichen('СЛАДКОЕ')
+        case 'banquet':
+            GetKichen('БАНКЕТНОЕ МЕНЮ')
             SetPanelKitchen([
-                'СЛАДКОЕ', 
-                'НЕ СЛАДКОЕ'
+                'БАНКЕТНОЕ МЕНЮ'
             ])
             break;
 }}, [Kitchen[0]])
@@ -68,7 +79,7 @@ const Kitcheny = ({Kitchen}) => {
                         <h1>{e[2]}</h1>
                         <p>{e[3]}</p>
                     </div>
-                    <div>
+                    <div style={{marginLeft: '15px'}}>
                         {e[4]}г, {e[5]}руб
                     </div>
                 </div>

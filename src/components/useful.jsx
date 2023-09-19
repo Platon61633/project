@@ -6,11 +6,10 @@ const Useful = () => {
 
     const [Useful, SetUseful] = useState([])
 
-    useEffect(function GetUseful() {
+    useEffect(()=> {
         axios.get('http://backrestoraunt?for=useful')
         .then(rsp=> SetUseful(rsp.data))
     }, [])
-    console.log(Useful);
     return(
         <div className='useful'>
             <div className='sation'>

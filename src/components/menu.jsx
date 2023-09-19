@@ -36,7 +36,7 @@ const Menu = ({SetKitchen}) => {
         </div>
         <div className="w-back">
           <div className="card-menu">
-            <Link to='/kitchen' onClick={()=>SetKitchen('breakfast')} className='w'><p className='breakfast-Img'></p></Link>
+            <Link to='/kitchen' onClick={()=>SetKitchen('banquet')} className='w'><p className='banquet-Img'></p></Link>
           </div>
         </div>
         <div className="w-back">

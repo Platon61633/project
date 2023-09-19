@@ -40,8 +40,8 @@
 .kitchen-Img{
   background: url(../imagin/kitchen2.webp) no-repeat;
 }
-.breakfast-Img{
-  background: url(../imagin/breackfast.webp) no-repeat;
+.banquet-Img{
+  background: url(../imagin/banquet.webp) no-repeat;
 }
 
 .card-of-wine-Img::after{
@@ -60,13 +60,13 @@
   text-shadow: 1px 1px 1px rgb(255, 255, 255);
   content: 'Кухня';
 }
-.breakfast-Img::after{
+.banquet-Img::after{
   box-shadow: 3px 3px white;  
   padding: 6px;
   background-color: rgb(49,44,32);
   color: rgb(190,123,54);
   text-shadow: 1px 1px 1px rgb(255, 255, 255);
-  content: 'Завтраки';
+  content: 'Банкетное меню';
 }
 
 .w-back:hover{
@@ -118,8 +118,9 @@
   color: black;
   display: flex;
   justify-content: center;
-  margin: 50px 0;
+  margin: 50px 15%;
   gap: 40px;
+  flex-wrap: wrap;
 }
 
 .panel-kitchen-item::after{
@@ -172,3 +173,46 @@
   white-space: nowrap;
 }
 
+
+/* ------------SPECIAL----------------------------- */
+
+
+
+.special{
+  padding: 100px;
+  background: url(../imagin/franch.webp);
+}
+
+.special-post img{
+  width: 60%;
+}
+
+.special-post{
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.special-post h1{
+  width: 55vw;
+  text-align: center;
+  color: rgb(196, 149, 47);
+  font-size: 2em;
+  background-color:floralwhite;
+  border: 30px ridge white;
+  transform: skewX(-15deg);
+  top: 142px
+}
+
+.special-post p{
+  width: 55vw;
+  text-align: center;
+  background-color:floralwhite;
+  border: 30px ridge white;
+  transform: skewX(-15deg);
+  color: rgb(196, 149, 47);
+  font-size: 2em;
+}

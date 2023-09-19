@@ -10,6 +10,7 @@ import Body from './body';
 import Menu from './menu';
 import Kitcheny from './kitchen';
 import { click } from '@testing-library/user-event/dist/click';
+import Special from './special';
 
 const NavBar = () => {
 
@@ -38,10 +39,10 @@ const NavBar = () => {
             onMouseOvery: menu,
             div: [
             {title:'Кухня', LinkTo: '/kitchen', Oclick: 'kitchen'}, 
-            {title:'Специальное предложение'},
-            {title: 'Завтраки', LinkTo: '/kitchen', Oclick: 'breakfast'},
-            {title:'Бар', LinkTo: '/kitchen', Oclick: 'bar'},
-            {title: 'Банкетное меню'}]
+            {title:'Специальное предложение', LinkTo: '/special'},
+            {title: 'Банкетное меню', LinkTo: '/kitchen', Oclick: 'banquet'},
+            {title:'Бар', LinkTo: '/kitchen', Oclick: 'bar'}
+            ]
         })
     }
 
@@ -80,9 +81,8 @@ const NavBar = () => {
                 <Route path='/menu' element={<Menu SetKitchen={SetKitchen}/>}/>
                 <Route path='/useful' element={<Useful/>}/>
                 <Route path='/kitchen' element={<Kitcheny Kitchen={[Kitchen, SetKitchen]}/>}/>
-                {/* <Route path='/bar' element={<WineCard/>}/>
-                <Route path='/breakfast' element={<Breakfast/>}/> */}
-                    
+                <Route path='/special' element={<Special/>}/>
+
                 <Route path='/qwertyuiop' element={<Polit/>}/>
             </Routes>
         </BrowserRouter>
