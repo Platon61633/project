@@ -10,7 +10,7 @@ const Special = () => {
 
     useEffect(
         ()=> {
-            axios.get('http://restoraunt.wuaze.com/index.php?for=special')
+            axios.get('https://restoraunt--specialdesign77.repl.co/?for=event')
             .then(rsp=> ArrSpecial(rsp.data+'ffffff'))
             console.log('gg');
         }, []
