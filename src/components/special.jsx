@@ -11,7 +11,7 @@ const Special = () => {
     useEffect(
         ()=> {
             axios.get('http://backrestoraunt?for=special')
-            .then(rsp=> ArrSpecial(rsp.data))
+            .then(rsp=> SetArrSpecial(rsp.data))
         }, []
     )
 
