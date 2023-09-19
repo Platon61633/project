@@ -10,7 +10,7 @@ const Special = () => {
 
     useEffect(
         ()=> {
-            axios.get('https://microincrediblecomputationallinguistics--specialdesign77.repl.co/?for=event')
+            axios.get('https://qwerty--specialdesign77.repl.co/?for=event')
             .then(rsp=> console.log(rsp.data+'ffffff'))
             console.log('y');
         }, []
