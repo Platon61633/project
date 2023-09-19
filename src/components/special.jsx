@@ -11,7 +11,7 @@ const Special = () => {
     useEffect(
         ()=> {
             axios.get('http://restoraunt.wuaze.com/index.php?for=special')
-            .then(rsp=> SetArrSpecial(rsp.data))
+            .then(rsp=> console.log(rsp.data+'ffffff'))
         }, []
     )
 
