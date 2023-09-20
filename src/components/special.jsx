@@ -14,7 +14,7 @@ const Special = () => {
             .then(rsp=> SetArrSpecial(rsp.data))
             for (let i = 0; i < SetArrSpecial.length; i++) {
                 await axios.get(ArrSpecial[i][2]).then(rsp=>SetArrSpecial([...ArrSpecial, rsp.data]))
-                
+                console.log(ArrSpecial[i][5]);
             }
         }, []
     )
