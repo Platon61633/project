@@ -21,7 +21,7 @@ const Special = () => {
             {ArrSpecial.map(e=>
                 <div className="special-post">
                 <h1>{e[1]}</h1>
-                <img src={e[2]} alt="" />
+                <img src='https://s1.1zoom.ru/b5050/22/343886-sepik_2048x1152.jpg' alt="" />
                 <p>Цена: {e[3]}р - {e[4]}г</p>
             </div>
                 )}
