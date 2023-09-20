@@ -11,7 +11,7 @@ const Resto = () => {
 
 
         useEffect(function GetEvents() {
-            axios.get('http://backrestoraunt?for=event')
+            axios.get('https://restoraunt--specialdesign77.repl.co?for=event')
             .then(resp=>SetEvents(resp.data))
         }, [])
 

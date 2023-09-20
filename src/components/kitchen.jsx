@@ -12,7 +12,7 @@ const Kitcheny = ({Kitchen}) => {
     const [GotKitchen, SetGotKitchen] = useState([])
     
     const GetKichen = async (e) => {
-            await axios.get('http://backrestoraunt?for=kitchen&type='+e)
+            await axios.get('https://restoraunt--specialdesign77.repl.co?for=kitchen&type='+e)
             .then(rsp=> SetGotKitchen(rsp.data))
     }
 

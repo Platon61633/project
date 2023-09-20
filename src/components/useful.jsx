@@ -7,7 +7,7 @@ const Useful = () => {
     const [Useful, SetUseful] = useState([])
 
     useEffect(()=> {
-        axios.get('http://backrestoraunt?for=useful')
+        axios.get('https://restoraunt--specialdesign77.repl.co?for=useful')
         .then(rsp=> SetUseful(rsp.data))
     }, [])
     return(
