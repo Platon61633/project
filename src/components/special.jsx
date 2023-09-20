@@ -12,10 +12,7 @@ const Special = () => {
         async ()=> {
             await axios.get('https://restoraunt--specialdesign77.repl.co/?for=special')
             .then(rsp=> SetArrSpecial(rsp.data))
-            for (let i = 0; i < SetArrSpecial.length; i++) {
-                await axios.get(ArrSpecial[i][2]).then(rsp=>SetArrSpecial([...ArrSpecial, rsp.data]))
-                console.log(ArrSpecial[i][5]);
-            }
+            ArrSpecial.map(async e=>await axios.get(e[2]).then(r=>SetArrSpecial([...ArrSpecial, r])))
         }, []
     )
 
