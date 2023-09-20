@@ -12,7 +12,6 @@ const Special = () => {
         async ()=> {
             await axios.get('https://restoraunt--specialdesign77.repl.co/?for=special')
             .then(rsp=> SetArrSpecial(rsp.data))
-            ArrSpecial.map(async e=>await axios.get(e[2]).then(r=>SetArrSpecial([...ArrSpecial, r])))
         }, []
     )
 
@@ -22,7 +21,7 @@ const Special = () => {
             {ArrSpecial.map(e=>
                 <div className="special-post">
                 <h1>{e[1]}</h1>
-                <img src={e[5]} alt="" />
+                <img src={e[2]} alt="" />
                 <p>Цена: {e[3]}р - {e[4]}г</p>
             </div>
                 )}
