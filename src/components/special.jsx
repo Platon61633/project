@@ -9,9 +9,13 @@ const Special = () => {
     const [ArrSpecial, SetArrSpecial] = useState([])
 
     useEffect(
-        ()=> {
-            axios.get('https://restoraunt--specialdesign77.repl.co/?for=special')
+        async ()=> {
+            await axios.get('https://restoraunt--specialdesign77.repl.co/?for=special')
             .then(rsp=> SetArrSpecial(rsp.data))
+            for (let i = 0; i < SetArrSpecial.length; i++) {
+                await axios.get(ArrSpecial[i][2]).then(rsp=>SetArrSpecial([...ArrSpecial, rsp.data]))
+                
+            }
         }, []
     )
 
@@ -21,7 +25,7 @@ const Special = () => {
             {ArrSpecial.map(e=>
                 <div className="special-post">
                 <h1>{e[1]}</h1>
-                <img src={e[2]} alt="" />
+                <img src={e[5]} alt="" />
                 <p>Цена: {e[3]}р - {e[4]}г</p>
             </div>
                 )}
