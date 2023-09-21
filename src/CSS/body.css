@@ -69,6 +69,10 @@
     font-size: 2em;
 }
 
+:where(.css-1vr7spz).ant-collapse>.ant-collapse-item >.ant-collapse-header .ant-collapse-expand-icon{
+    display: none;
+}
+
 
 .panel{
     display: flex;
