@@ -9,7 +9,6 @@ import Useful from './useful';
 import Body from './body';
 import Menu from './menu';
 import Kitcheny from './kitchen';
-import { click } from '@testing-library/user-event/dist/click';
 import Special from './special';
 
 const NavBar = () => {
