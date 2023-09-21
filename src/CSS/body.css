@@ -24,16 +24,16 @@
     padding: 10px;
 }
 
-:where(.css-dev-only-do-not-override-1vr7spz).ant-drawer .ant-drawer-title{
+:where(.css-1vr7spz).ant-drawer .ant-drawer-title{
     font-size: 2em;
     text-align: center;
 }
 
-:where(.css-dev-only-do-not-override-1vr7spz).ant-drawer .ant-drawer-header{
+:where(.css-1vr7spz).ant-drawer .ant-drawer-header{
     background-color: rgba(0, 0, 0, 0.299);
 }
 
-:where(.css-dev-only-do-not-override-1vr7spz).ant-drawer .ant-drawer-body{
+:where(.css-1vr7spz).ant-drawer .ant-drawer-body{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
