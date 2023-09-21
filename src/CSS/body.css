@@ -24,6 +24,34 @@
     padding: 10px;
 }
 
+:where(.css-dev-only-do-not-override-1vr7spz).ant-drawer .ant-drawer-title{
+    font-size: 2em;
+    text-align: center;
+}
+
+:where(.css-dev-only-do-not-override-1vr7spz).ant-drawer .ant-drawer-header{
+    background-color: rgba(0, 0, 0, 0.299);
+}
+
+:where(.css-dev-only-do-not-override-1vr7spz).ant-drawer .ant-drawer-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 2em;
+}
+
+
+:where(.css-dev-only-do-not-override-1vr7spz).ant-collapse>.ant-collapse-item >.ant-collapse-header .ant-collapse-expand-icon{
+    display: none;
+}
+
+:where(.css-dev-only-do-not-override-1vr7spz).ant-collapse>.ant-collapse-item >.ant-collapse-header{
+    
+}
+
+/* ----------------dev--------------- */
+
 :where(.css-1vr7spz).ant-drawer .ant-drawer-title{
     font-size: 2em;
     text-align: center;

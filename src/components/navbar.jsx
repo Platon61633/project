@@ -12,21 +12,21 @@ import Menu from './menu';
 import Kitcheny from './kitchen';
 import Special from './special';
 import MediaQuery from 'react-responsive';
-import { Drawer, theme } from 'antd';
+import { Collapse, Drawer } from 'antd';
 
 const NavBar = () => {
 
-    const [Panel, SetPanel] = useState({onMouseOvery: null, div: [{title: 'Добро пожаловать в ресторан Май', Link:'/'}]})
+    const [PanelDesktop, SetPanelDesktop] = useState({onMouseOvery: null, div: [{title: 'Добро пожаловать в ресторан Май', Link:'/'}]})
 
     const resetPanel = (e) =>{
         e.preventDefault()
-        SetPanel({onMouseOvery: null, div: [{title: 'Добро пожаловать в ресторан Май', Link:'/'}]})
+        SetPanelDesktop({onMouseOvery: null, div: [{title: 'Добро пожаловать в ресторан Май', Link:'/'}]})
     }
 
 
     const resto = (e) =>{
         e.preventDefault()
-        SetPanel({
+        SetPanelDesktop({
             onMouseOvery: resto,
             div: [{title: 'О ресторане', LinkTo: '/restoraunt'}, {title: 'Полезное', LinkTo: '/useful'}]
         })
@@ -37,7 +37,7 @@ const NavBar = () => {
 
     const menu = (e) =>{
         e.preventDefault()
-        SetPanel({
+        SetPanelDesktop({
             onMouseOvery: menu,
             div: [
             {title:'Кухня', LinkTo: '/kitchen', Oclick: 'kitchen'}, 
@@ -49,7 +49,6 @@ const NavBar = () => {
     }
 
 // ----------------------------------------------------------------------------
-    const { token } = theme.useToken();
     const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -59,6 +58,22 @@ const NavBar = () => {
   const onClose = () => {
     setOpen(false);
   };
+
+  const items = [
+    {
+      key: '1',
+      label: 'Ресторан',
+      children: <div><Link to='/restoraunt' onClick={onClose} className='b'>
+      О ресторане
+    </Link>
+    <hr />
+    <Link to='/useful' onClick={onClose} className='b'>
+      Полезное
+    </Link>
+    </div>
+    ,
+    }
+  ];
     
 
     return(
@@ -76,12 +91,12 @@ const NavBar = () => {
                     <Link className='nav-item w click' to='/contacts' onMouseOver={resetPanel}>Контакты</Link>
                 </nav>
                 <div 
-                onMouseOver={Panel.onMouseOvery}
+                onMouseOver={PanelDesktop.onMouseOvery}
                 onMouseOut={resetPanel}
                 className='panel'>
-                    {Panel.div.map(
+                    {PanelDesktop.div.map(
                     e => 
-                        <Link to={e.LinkTo} onClick={()=>SetKitchen(e.Oclick)} onMouseOver={Panel.onMouseOvery} className='w panel-item'>
+                        <Link to={e.LinkTo} onClick={()=>SetKitchen(e.Oclick)} onMouseOver={PanelDesktop.onMouseOvery} className='w'>
                             {e.title}
                         </Link>
                 )}
@@ -103,7 +118,9 @@ const NavBar = () => {
             </MediaQuery>
 
       <Drawer style={{backgroundColor: 'rgb(196, 117, 47)' }} className='drawer' title="Май" placement="top" closable={false} getContainer={false} onClose={onClose} open={open}>
-                    <Link className='w' to='/restoraunt' onClick={onClose}>Ресторан</Link>
+                    <div className='w'>
+                        <Collapse items={items} ghost={true}/>
+                    </div>
                     <Link className='w' to='/menu' onClick={onClose}>Меню</Link>
                     <Link className='w' href='' onClick={onClose}>Доставка</Link>
                     <Link className='w' to='/contacts' onClick={onClose}>Контакты</Link>
