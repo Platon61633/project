@@ -24,10 +24,23 @@
     padding: 10px;
 }
 
-.drawer{
+:where(.css-dev-only-do-not-override-1vr7spz).ant-drawer .ant-drawer-title{
+    font-size: 2em;
+    text-align: center;
+}
+
+:where(.css-dev-only-do-not-override-1vr7spz).ant-drawer .ant-drawer-header{
+    background-color: rgba(0, 0, 0, 0.299);
+}
+
+:where(.css-dev-only-do-not-override-1vr7spz).ant-drawer .ant-drawer-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     text-align: center;
     font-size: 2em;
 }
+
 
 .panel{
     display: flex;
@@ -49,12 +62,13 @@
 
 .img-home{
     background: no-repeat url("../imagin/resto.jpg");
+    background-position: center center;
     min-height: 1000px;
 }
 
-.img-cont{
+/* .img-cont{
     background: url('../imagin/resto2_q\ \(3\).jpg') no-repeat;
-}
+} */
 
 .img-restoraunt{
     background-color: antiquewhite;

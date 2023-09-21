@@ -87,6 +87,10 @@ const NavBar = () => {
                 )}
                 </div>
             </MediaQuery>
+
+
+{/* ----------------mobile---------------------- */}
+
             <MediaQuery maxWidth={1224}>
                 <nav className='mobile'>
                     <div></div>
@@ -98,10 +102,11 @@ const NavBar = () => {
                 </nav>
             </MediaQuery>
 
-      <Drawer style={{backgroundColor: 'rgb(196, 117, 47)', fontSize: '2em', }} className='drawer' title="Май" placement="top" closable={false} getContainer={false} onClose={onClose} open={open}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <Drawer style={{backgroundColor: 'rgb(196, 117, 47)' }} className='drawer' title="Май" placement="top" closable={false} getContainer={false} onClose={onClose} open={open}>
+                    <Link className='w' to='/restoraunt' onClick={onClose}>Ресторан</Link>
+                    <Link className='w' to='/menu' onClick={onClose}>Меню</Link>
+                    <Link className='w' href='' onClick={onClose}>Доставка</Link>
+                    <Link className='w' to='/contacts' onClick={onClose}>Контакты</Link>
       </Drawer>
 
 
