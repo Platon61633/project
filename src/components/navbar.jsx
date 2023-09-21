@@ -63,14 +63,14 @@ const NavBar = () => {
     {
       key: '1',
       label: 'Ресторан',
-      children: <div><Link to='/restoraunt' onClick={onClose} className='b'>
+      children: <span ><Link to='/restoraunt' onClick={onClose} className='w'>
       О ресторане
     </Link>
-    <hr />
-    <Link to='/useful' onClick={onClose} className='b'>
+    <hr/>
+    <Link to='/useful' onClick={onClose} className='w'>
       Полезное
     </Link>
-    </div>
+    </span>
     ,
     }
   ];
@@ -118,9 +118,8 @@ const NavBar = () => {
             </MediaQuery>
 
       <Drawer style={{backgroundColor: 'rgb(196, 117, 47)' }} className='drawer' title="Май" placement="top" closable={false} getContainer={false} onClose={onClose} open={open}>
-                    <div className='w'>
+                    
                         <Collapse items={items} ghost={true}/>
-                    </div>
                     <Link className='w' to='/menu' onClick={onClose}>Меню</Link>
                     <Link className='w' href='' onClick={onClose}>Доставка</Link>
                     <Link className='w' to='/contacts' onClick={onClose}>Контакты</Link>

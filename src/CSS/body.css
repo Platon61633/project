@@ -21,7 +21,7 @@
 
 .mobile .logo-mobile + img{
     margin-left: auto;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 :where(.css-dev-only-do-not-override-1vr7spz).ant-drawer .ant-drawer-title{
@@ -46,8 +46,17 @@
     display: none;
 }
 
-:where(.css-dev-only-do-not-override-1vr7spz).ant-collapse>.ant-collapse-item >.ant-collapse-header{
-    
+:where(.css-dev-only-do-not-override-1vr7spz).ant-collapse>.ant-collapse-item >.ant-collapse-header .ant-collapse-header-text {
+    font-size: 2em;
+    color: white;
+}
+
+:where(.css-dev-only-do-not-override-1vr7spz).ant-collapse-ghost >.ant-collapse-item >.ant-collapse-content >.ant-collapse-content-box {
+    padding-block: 16px;
+    font-size: 2em;
+    padding: 30px;
+    border: 2px solid white;
+    border-radius: 20%;
 }
 
 /* ----------------dev--------------- */
