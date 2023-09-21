@@ -1,4 +1,4 @@
-nav{
+.desktop{
     display: flex;
     justify-content: space-around;
     font-size: 2em;
@@ -6,6 +6,29 @@ nav{
     align-items: center;
     padding: 0 20%;
 }
+
+.mobile{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-content: center;
+    height: 92px;
+    background-color: rgb(196, 117, 47);
+}
+
+.logo-mobile{
+    justify-self: center;
+}
+
+.mobile .logo-mobile + img{
+    margin-left: auto;
+    padding: 10px;
+}
+
+.drawer{
+    text-align: center;
+    font-size: 2em;
+}
+
 .panel{
     display: flex;
     justify-content: space-around;
