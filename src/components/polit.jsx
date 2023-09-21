@@ -152,7 +152,7 @@ const Polit = () => {
                 break;
         
             case 'S':
-                while (id!==ArrUseful[i][0]) {
+                while (id!==ArrSpecial[i][0]) {
                     i+=1
                     }
                     SetInp({desc: ArrSpecial[i][1], img: ArrSpecial[i][2], price: ArrSpecial[i][3], weight: ArrSpecial[i][4]})
