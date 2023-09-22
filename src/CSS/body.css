@@ -24,7 +24,7 @@
     /* padding: 10px; */
 }
 
-:where(.css-dev-only-do-not-override-1vr7spz).ant-drawer .ant-drawer-title{
+/* :where(.css-dev-only-do-not-override-1vr7spz).ant-drawer .ant-drawer-title{
     font-size: 2em;
     text-align: center;
 }
@@ -55,7 +55,7 @@
 :where(.css-dev-only-do-not-override-1vr7spz).ant-collapse>.ant-collapse-item >.ant-collapse-header .ant-collapse-header-text {
     font-size: 2em;      
     color: white;
-    /* можно попробовать убрать */
+    можно попробовать убрать
 }
 
 :where(.css-dev-only-do-not-override-1vr7spz).ant-collapse-ghost >.ant-collapse-item >.ant-collapse-content >.ant-collapse-content-box {
@@ -68,7 +68,7 @@
 
 /* ----------------dev--------------- */
 
-:where(.css-1vr7spz).ant-drawer .ant-drawer-title{
+/*:where(.css-1vr7spz).ant-drawer .ant-drawer-title{
     font-size: 2em;
     text-align: center;
 }
@@ -87,7 +87,9 @@
 
 :where(.css-1vr7spz).ant-collapse>.ant-collapse-item >.ant-collapse-header .ant-collapse-expand-icon{
     display: none;
-}
+} */
+
+
 
 
 .panel{
