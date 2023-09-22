@@ -153,7 +153,6 @@ const [CollapseMenu, SetCollapseMenu] = useState(false)
                                     }}>{e.title}</Link>)}
                             </div>:
                             <></>}
-                            {/* <Link className='w' to='/menu' onClick={()=>setOpen(false)}>Меню</Link> */}
                             <Link className='w' href='' onClick={()=>setOpen(false)}>Доставка</Link>
                             <Link className='w' to='/contacts' onClick={()=>{setOpen(false)}}>Контакты</Link>
                         </div>
