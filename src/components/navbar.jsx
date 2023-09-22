@@ -12,20 +12,20 @@ import Menu from './menu';
 import Kitcheny from './kitchen';
 import Special from './special';
 import MediaQuery from 'react-responsive';
-import { Collapse, Drawer } from 'antd';
+// import { Collapse, Drawer } from 'antd';
 
 const NavBar = () => {
 
     const [PanelDesktop, SetPanelDesktop] = useState({onMouseOvery: null, div: [{title: 'Добро пожаловать в ресторан Май', Link:'/'}]})
 
-    const resetPanel = (e) =>{
-        e.preventDefault()
+    const resetPanel = () =>{
+        // e.preventDefault()
         SetPanelDesktop({onMouseOvery: null, div: [{title: 'Добро пожаловать в ресторан Май', Link:'/'}]})
     }
 
 
-    const resto = (e) =>{
-        e.preventDefault()
+    const resto = () =>{
+        // e.preventDefault()
         SetPanelDesktop({
             onMouseOvery: resto,
             div: [{title: 'О ресторане', LinkTo: '/restoraunt'}, {title: 'Полезное', LinkTo: '/useful'}]
@@ -51,30 +51,32 @@ const NavBar = () => {
 // ----------------------------------------------------------------------------
     const [open, setOpen] = useState(false);
 
-  const showDrawer = () => {
-    setOpen(true);
-  };
+//   const showDrawer = () => {
+//     setOpen(true);
+//   };
 
-  const onClose = () => {
-    setOpen(false);
-  };
+//   const ()=>setOpen(false) = () => {
+//     setOpen(false);
+//   };
 
-  const items = [
-    {
-      key: '1',
-      label: 'Ресторан',
-      children: <span ><Link to='/restoraunt' onClick={onClose} className='w'>
-      О ресторане
-    </Link>
-    <hr/>
-    <Link to='/useful' onClick={onClose} className='w'>
-      Полезное
-    </Link>
-    </span>
-    ,
-    }
-  ];
+//   const items = [
+//     {
+//       key: '1',
+//       label: 'Ресторан',
+//       children: <span ><Link to='/restoraunt' onClick={()=>setOpen(false)} className='w'>
+//       О ресторане
+//     </Link>
+//     <hr/>
+//     <Link to='/useful' onClick={()=>setOpen(false)} className='w'>
+//       Полезное
+//     </Link>
+//     </span>
+//     ,
+//     }
+//   ];
     
+const [CollapseResto, SetCollapseResto] = useState(false)
+const [CollapseMenu, SetCollapseMenu] = useState(false)
 
     return(
         
@@ -113,17 +115,52 @@ const NavBar = () => {
                         <img src={logo} width={60} alt="logo" />
                         <span>Май</span>
                     </Link>
-                    <img src={menuLines} onClick={showDrawer} width={80} alt="" />
+                    <img src={menuLines} onClick={()=>setOpen(true)} width={80} alt="" />
                 </nav>
             </MediaQuery>
 
-      <Drawer style={{backgroundColor: 'rgb(196, 117, 47)' }} className='drawer' title="Май" placement="top" closable={false} getContainer={false} onClose={onClose} open={open}>
+      {/* <Drawer style={{backgroundColor: 'rgb(196, 117, 47)' }} className='drawer' title="Май" placement="top" closable={false} getContainer={false} ()=>setOpen(false)={()=>setOpen(false)} open={open}>
                     
-                        <Collapse items={items} ghost={true}/>
-                    <Link className='w' to='/menu' onClick={onClose}>Меню</Link>
-                    <Link className='w' href='' onClick={onClose}>Доставка</Link>
-                    <Link className='w' to='/contacts' onClick={onClose}>Контакты</Link>
-      </Drawer>
+                        <Collapse items={items} ghost={true}/> */}
+                    {open?
+                    <div className="collapse" onClick={()=>setOpen(false)}>
+                        <div className="collapse-act" onClick={(e)=>e.stopPropagation()}>
+                            <img src={logo} width={60} alt="logo" />
+                            <div onClick={()=>{
+                            SetCollapseResto(CollapseResto?false:true)
+                            SetCollapseMenu(false)
+                            resto()}}>
+                            Ресторан
+                            </div>
+                            {CollapseResto?
+                            <div className='dropdown'>
+                                {PanelDesktop.div.map(e=>
+                                    <Link className='c' onClick={()=>setOpen(false)} to={e.LinkTo}>{e.title}</Link>)}
+                            </div>:
+                            <></>}
+                            <div onClick={(e)=>{
+                            SetCollapseMenu(CollapseMenu?false:true)
+                            SetCollapseResto(false)
+                            menu(e)}}>
+                            Меню
+                            </div>
+                            {CollapseMenu?
+                            <div className='dropdown'>
+                                {PanelDesktop.div.map(e=>
+                                    <Link className='c' to={e.LinkTo} onClick={()=>{
+                                        setOpen(false)
+                                        SetKitchen(e.Oclick)
+                                    }}>{e.title}</Link>)}
+                            </div>:
+                            <></>}
+                            {/* <Link className='w' to='/menu' onClick={()=>setOpen(false)}>Меню</Link> */}
+                            <Link className='w' href='' onClick={()=>setOpen(false)}>Доставка</Link>
+                            <Link className='w' to='/contacts' onClick={()=>{setOpen(false)}}>Контакты</Link>
+                        </div>
+                    </div>
+                    :
+                    <></>}
+      {/* </Drawer> */}
 
 
 

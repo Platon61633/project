@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-around;
     font-size: 2em;
-    background-color: rgb(196, 117, 47);
+    background-color:  var(--color);
     align-items: center;
     padding: 0 20%;
 }
@@ -12,7 +12,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     align-content: center;
     height: 92px;
-    background-color: rgb(196, 117, 47);
+    background-color:  var(--color);
 }
 
 .logo-mobile{
@@ -90,6 +90,51 @@
 } */
 
 
+.collapse{
+    text-transform: uppercase;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 2em;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.651);
+    z-index: 2;
+}
+
+.collapse-act{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    background-color: var(--color);
+    padding: 10px 0 30px;
+}
+
+.dropdown{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:  var(--color);
+    gap: 20px;
+    padding: 30px 20px;
+    border-radius: 20%;
+    background-color: white;
+    animation: collapse 3s;
+}
+
+@keyframes collapse{
+        0% {
+           opacity: 0;
+           transform: translateY(-20px);
+        }
+        100% {
+           opacity: 1;
+           transform: translateY(0);
+        }
+     } 
+
+
 
 
 .panel{
@@ -139,7 +184,7 @@
     display: block;
     position: absolute;
     border-radius: 10%;
-    color: rgb(196, 117, 47);
+    color:  var(--color);
     font-size: 11px;
     transform: translate(30px,-50px);
     padding: 5px;
