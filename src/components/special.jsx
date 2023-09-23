@@ -10,7 +10,7 @@ const Special = () => {
 
     useEffect(
         ()=> {
-            axios.get('http://u99561m1.beget.tech/?for=special', {referrer: "unsafe-url"})
+            axios.get('https://restoraunt--specialdesign77.repl.co/?for=special')
             .then(rsp=> SetArrSpecial(rsp.data))
         }, []
     )
