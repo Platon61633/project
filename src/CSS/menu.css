@@ -18,7 +18,7 @@
   position: relative;
   transform-style: preserve-3d;
   perspective: 1000px;
-  width: 30vw;
+  width: 30%;
   font-size: 3rem;
   opacity: .6;
   transition: all 1s;
@@ -80,21 +80,11 @@
   scale: 1.05;
 }
 
-@media  (max-width: 800px){
-  .cards-menu{
-    flex-direction: column;
-  }
-  .card-menu{
-    width: 70vw;
-  }
-  .card-menu p{
-    height: 300px;
-  }
-}
 
 /* ----------------------kitchen-------------------- */
 .kitchen{
   background: url(../imagin/fon_menu2.webp);
+  background-position: center center;
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -174,6 +164,7 @@
 }
 
 
+
 /* ------------SPECIAL----------------------------- */
 
 
@@ -197,7 +188,7 @@
 }
 
 .special-post h1{
-  width: 55vw;
+  width: 80vw;
   text-align: center;
   color: rgb(196, 149, 47);
   font-size: 2em;
@@ -208,11 +199,61 @@
 }
 
 .special-post p{
-  width: 55vw;
+  width: 80vw;
   text-align: center;
   background-color:floralwhite;
   border: 30px ridge white;
   transform: skewX(-15deg);
   color: rgb(196, 149, 47);
   font-size: 2em;
+}
+
+@media  (max-width: 1224px){
+
+  .special{
+    padding: 20px 0 60px;
+  }
+  .kitchen{
+    padding-top: 30px;
+  }
+  .head-k{
+    font-size: 1.5em;
+    border-bottom: 2px dashed var(--color);
+    padding-bottom: 30px;
+  }
+  .head-k span{
+    color: black;
+  }
+  .panel-kitchen{
+    gap: 20px;
+    font-size: 1em;
+  }
+  .cards-menu{
+    flex-direction: column;
+    width: 70vw;
+  }
+  .card-menu p{
+    height: 300px;
+  }
+  .kitchen-menu-item{
+    font-size: 0.5em;
+    width: 100%;
+  }
+  .kitchen-menu{
+    grid-template-columns: 1fr;
+  }
+  
+  .kitchen-menu-item:nth-child(n){
+    padding-left: inherit;
+    padding-right: inherit;
+    border-right: none;
+  }
+
+  .special-post h1, .special-post p{
+    font-size: 1.3em;
+    border-width: 10px;
+  }
+  .special-post img{
+    width: 80%;
+  }
 }

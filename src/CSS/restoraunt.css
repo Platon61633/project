@@ -17,8 +17,12 @@
     font-size: 2em;
 }
 
+.start + h1{
+    margin: 250px 0 150px;
+}
+
 .resto3 img{
-    contain: content;
+    max-width: 100%;
 }
 .resto3{
     overflow: hidden;
@@ -70,7 +74,6 @@
 .event{
     width: 100%;
     display: flex;
-    flex-grow: 1/1;
 }
 
 .event:nth-of-type(2n){
@@ -221,8 +224,30 @@ textarea [placeholder=ТИП]{
 
 
 
-@media  (max-width: 800px){
+@media  (max-width: 1224px){
     .start{
-    flex-wrap: wrap;
+        padding-top: 0;
+        grid-template-columns: 1fr;
+        font-size: 0.5em;
+    }
+    .title{
+        padding-top: 40px;
+    }
+    /* .events{
+        font-size: 0.7em;
+    } */
+    .start + h1{
+        font-size: 0.7em;
+        margin-bottom: 70px;
+    }
+    .event{
+        flex-direction: column;
+        font-size: 0.7em;
+    }
+    .event img{
+            width: 100%;
+    }
+    .event:nth-of-type(2n){
+        flex-direction: column;
     }
 }

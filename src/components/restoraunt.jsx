@@ -42,7 +42,7 @@ const Resto = () => {
                     </div>
                 </span>
             </div> 
-            <h1 style={{margin: '250px 0 150px'}}>АНОНСЫ И СОБЫТИЯ</h1>
+            <h1>АНОНСЫ И СОБЫТИЯ</h1>
             <div className='events'>
                {Events.map(e=>
                 <div className='event'>

@@ -147,7 +147,7 @@ const [CollapseMenu, SetCollapseMenu] = useState(false)
                             {CollapseMenu?
                             <div className='dropdown'>
                                 {PanelDesktop.div.map(e=>
-                                    <Link className='c' to={e.LinkTo} onClick={()=>{
+                                    <Link style={{textAlign: 'center'}} className='c' to={e.LinkTo} onClick={()=>{
                                         setOpen(false)
                                         SetKitchen(e.Oclick)
                                     }}>{e.title}</Link>)}
