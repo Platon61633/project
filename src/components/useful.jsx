@@ -12,7 +12,7 @@ const Useful = () => {
     }, [])
     return(
         <div className='useful'>
-            <div className='sation'>
+            {/* <div className='sation'>
                 <h1>Медовый Спас в ресторане «Май»</h1>
                 <time>14 августа 2023</time>
                 <hr/>
@@ -24,7 +24,7 @@ const Useful = () => {
                     <div><strong>Телефон для бронирования столиков:</strong> +7 (812) 925-80-88</div>
                 </p>
                 </div>
-            </div>
+            </div> */}
             
             {Useful.map(
                 e=>

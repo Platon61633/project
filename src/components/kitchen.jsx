@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import reload from '../imagin/reload-loading-svgrepo-com.svg'
 
 
 
@@ -10,10 +11,14 @@ const Kitcheny = ({Kitchen}) => {
     const [PanelKitchen, SetPanelKitchen] = useState(['ЗАКУСКИ', 'ОСНОВНОЕ БЛЮДО', 'САЛАТЫ', 'СУПЫ', 'ДЕСЕРТ', 'НАПИТКИ'])
 
     const [GotKitchen, SetGotKitchen] = useState([])
+
+    const [Loader, SetLoader] = useState(false)
     
     const GetKichen = async (e) => {
-            await axios.get('https://restoraunt--specialdesign77.repl.co?for=kitchen&type='+e)
-            .then(rsp=> SetGotKitchen(rsp.data))
+            SetLoader(true)
+            setTimeout(await axios.get('https://restoraunt--specialdesign77.repl.co?for=kitchen&type='+e)
+            .then(rsp=> SetGotKitchen(rsp.data)), 5000)
+            SetLoader(false)
     }
 
 
@@ -54,6 +59,9 @@ const Kitcheny = ({Kitchen}) => {
                 'БАНКЕТНОЕ МЕНЮ'
             ])
             break;
+        default:
+
+            break;
 }}, [Kitchen[0]])
 
 
@@ -73,6 +81,10 @@ const Kitcheny = ({Kitchen}) => {
             </div>
 
             <div className="kitchen-menu">
+                {Loader?
+                <img src={reload} alt='Загрузка'/>
+                :
+                <></>}
                 {GotKitchen.map(e=>
                 <div className='kitchen-menu-item'>
                     <div>

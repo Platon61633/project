@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import watermelon from '../imagin/watermelon.jpg'
-import cheescake from '../imagin/cheesecake.jpg'
+// import watermelon from '../imagin/watermelon.jpg';
+import cheescake from '../imagin/cheesecake.jpg';
 import axios from 'axios';
 
 const Special = () => {

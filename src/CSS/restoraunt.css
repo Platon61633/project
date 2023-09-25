@@ -251,3 +251,16 @@ textarea [placeholder=ТИП]{
         flex-direction: column;
     }
 }
+
+@media  (max-width: 1224px){
+    .useful{
+        font-size: 0.6em;
+        padding: 20px 0;
+    }
+    .sation{
+        padding: 25px;
+    }
+    .sation .desc{
+        padding: 10px;
+    }
+}

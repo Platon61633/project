@@ -36,6 +36,9 @@ const Polit = () => {
             case 'menu':
                 menu.current?.scrollIntoView({behavior: 'smooth'});
                 break;
+            default:
+
+                break;
         }
         
     }
@@ -158,6 +161,9 @@ const Polit = () => {
                     SetInp({desc: ArrSpecial[i][1], img: ArrSpecial[i][2], price: ArrSpecial[i][3], weight: ArrSpecial[i][4]})
                     SetFixId(id)
                     SetFixFS(true)
+                break;
+            default:
+
                 break;
         }
     }
@@ -400,7 +406,7 @@ const Polit = () => {
                             <tr><th style={{backgroundColor: 'rgba(0,0,0,0.3)'}} align='center' colSpan={7}>{e[0][1]}</th></tr>
                         {e.map(ev=>
                                     <tr>
-                                        {ev.filter((e,i)=>i!=1).map(eve=>
+                                        {ev.filter((e,i)=>i!==1).map(eve=>
                                         <td>
                                             {eve}
                                         </td>
