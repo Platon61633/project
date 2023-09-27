@@ -9,9 +9,10 @@ const Special = () => {
     const [ArrSpecial, SetArrSpecial] = useState([])
 
     useEffect(
-        ()=> {
-            axios.get('https://restoraunt.wuaze.com/?for=special', {cors: {origin: '*'}})
+        async ()=> {
+            await axios.get('https://restoraunt.wuaze.com/?for=special', {cors: {origin: '*'}})
             .then(rsp=> SetArrSpecial(rsp.data))
+            console.log('vhvjh')
             // axios.get('https://restoraunt--specialdesign77.repl.co/?for=special')
             // .then(rsp=> SetArrSpecial(rsp.data))
         }, []
