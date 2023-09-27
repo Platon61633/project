@@ -9,6 +9,8 @@ const Useful = () => {
     useEffect(()=> {
         axios.get('https://restoraunt--specialdesign77.repl.co?for=useful')
         .then(rsp=> SetUseful(rsp.data))
+        // axios.get('localhost?for=useful')
+        // .then(rsp=> SetUseful(rsp.data))
     }, [])
     return(
         <div className='useful'>
