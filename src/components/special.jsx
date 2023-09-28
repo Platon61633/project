@@ -11,7 +11,7 @@ const Special = () => {
     useEffect(
         async ()=> {
             await axios.get('https://php-vercel-snowy.vercel.app/api')
-            .then(rsp=> SetArrSpecial(rsp.data))
+            .then(rsp=> console.lo(rsp.data))
             // console.log('vhvjh')
             // axios.get('https://restoraunt--specialdesign77.repl.co/?for=special')
             // .then(rsp=> SetArrSpecial(rsp.data))
