@@ -7,10 +7,8 @@ const Useful = () => {
     const [Useful, SetUseful] = useState([])
 
     useEffect(()=> {
-        axios.get('https://restoraunt--specialdesign77.repl.co?for=useful')
+        axios.get('https://php-vercel-snowy.vercel.app/api')
         .then(rsp=> SetUseful(rsp.data))
-        // axios.get('localhost?for=useful')
-        // .then(rsp=> SetUseful(rsp.data))
     }, [])
     return(
         <div className='useful'>
