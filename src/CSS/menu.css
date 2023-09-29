@@ -93,6 +93,36 @@
   color: white;
 }
 
+.reload{
+  display: flex;
+  justify-content: center;
+  width: 200%;
+}
+
+.reload p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  background-color: rgba(0, 0, 0, 0.371);
+  border-radius: 20%;
+}
+
+.reload img{
+  width: 50px;
+  animation: load 1s infinite linear;
+}
+
+@keyframes load{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
 .head-k{
   text-align: center;
   font-size: 3em;
@@ -215,6 +245,9 @@
   }
   .kitchen{
     padding-top: 30px;
+  }
+  .reload{
+    width: 100%;
   }
   .head-k{
     font-size: 1.5em;

@@ -16,8 +16,8 @@ const Kitcheny = ({Kitchen}) => {
     
     const GetKichen = async (e) => {
             SetLoader(true)
-            setTimeout(await axios.get('https://back-restoraunt.vercel.app/api?for=kitchen&type='+e)
-            .then(rsp=> SetGotKitchen(rsp.data)), 5000)
+            await axios.get('https://back-restoraunt.vercel.app/api?for=kitchen&type='+e)
+            .then(rsp=> SetGotKitchen(rsp.data))
             SetLoader(false)
     }
 
@@ -82,7 +82,11 @@ const Kitcheny = ({Kitchen}) => {
 
             <div className="kitchen-menu">
                 {Loader?
-                <img src={reload} alt='Загрузка'/>
+                <div className="reload">
+                    <p>
+                    <img src={reload} alt='Загрузка'/>
+                    </p>
+                </div>
                 :
                 <></>}
                 {GotKitchen.map(e=>

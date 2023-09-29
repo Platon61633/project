@@ -41,39 +41,15 @@ const NavBar = () => {
             onMouseOvery: menu,
             div: [
             {title:'Кухня', LinkTo: '/kitchen', Oclick: 'kitchen'}, 
-            {title:'Специальное предложение', LinkTo: '/special'},
+            {title:'Специальное предложение', LinkTo: '/special', Oclick: Kitchen},
             {title: 'Банкетное меню', LinkTo: '/kitchen', Oclick: 'banquet'},
             {title:'Бар', LinkTo: '/kitchen', Oclick: 'bar'}
             ]
         })
     }
 
-// ----------------------------------------------------------------------------
     const [open, setOpen] = useState(false);
 
-//   const showDrawer = () => {
-//     setOpen(true);
-//   };
-
-//   const ()=>setOpen(false) = () => {
-//     setOpen(false);
-//   };
-
-//   const items = [
-//     {
-//       key: '1',
-//       label: 'Ресторан',
-//       children: <span ><Link to='/restoraunt' onClick={()=>setOpen(false)} className='w'>
-//       О ресторане
-//     </Link>
-//     <hr/>
-//     <Link to='/useful' onClick={()=>setOpen(false)} className='w'>
-//       Полезное
-//     </Link>
-//     </span>
-//     ,
-//     }
-//   ];
     
 const [CollapseResto, SetCollapseResto] = useState(false)
 const [CollapseMenu, SetCollapseMenu] = useState(false)
@@ -119,9 +95,7 @@ const [CollapseMenu, SetCollapseMenu] = useState(false)
                 </nav>
             </MediaQuery>
 
-      {/* <Drawer style={{backgroundColor: 'rgb(196, 117, 47)' }} className='drawer' title="Май" placement="top" closable={false} getContainer={false} ()=>setOpen(false)={()=>setOpen(false)} open={open}>
-                    
-                        <Collapse items={items} ghost={true}/> */}
+
                     {open?
                     <div className="collapse" onClick={()=>setOpen(false)}>
                         <div className="collapse-act" onClick={(e)=>e.stopPropagation()}>
@@ -159,7 +133,6 @@ const [CollapseMenu, SetCollapseMenu] = useState(false)
                     </div>
                     :
                     <></>}
-      {/* </Drawer> */}
 
 
 
