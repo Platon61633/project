@@ -47,18 +47,18 @@ const Polit = () => {
     
 
     useEffect(function GetPosts() {
-        axios.get('https://restoraunt--specialdesign77.repl.co?for=event')
+        axios.get('https://back-restoraunt.vercel.app/api?for=event')
         .then(rsp=>SetArrEvents(rsp.data))
-        axios.get('https://restoraunt--specialdesign77.repl.co?for=useful')
+        axios.get('https://back-restoraunt.vercel.app/api?for=useful')
         .then(rsp=> SetArrUseful(rsp.data))
-        axios.get('https://restoraunt--specialdesign77.repl.co?for=special')
+        axios.get('https://back-restoraunt.vercel.app/api?for=special')
         .then(rsp=> SetArrSpecial(rsp.data))
 
     }, [])
 
 
     const getKitchen = async (e)=>{
-        await axios.get('https://restoraunt--specialdesign77.repl.co?for=kitchen&type='+e)
+        await axios.get('https://back-restoraunt.vercel.app/api?for=kitchen&type='+e)
         .then(rsp=> SetArrKitchen(rsp.data))
         console.log(ArrKitchen)
 }
@@ -66,7 +66,7 @@ const Polit = () => {
 
 
     const dlt = async (e, type) =>{
-        await axios.delete('https://restoraunt--specialdesign77.repl.co?for='+type,{ data: e })
+        await axios.delete('https://back-restoraunt.vercel.app/api?for='+type,{ data: e })
         window.location.reload();
     }
 
@@ -91,24 +91,24 @@ const Polit = () => {
     const creatEvent = async (type, f)=>{
         switch (type) {
             case 'event':
-                await axios.post('https://restoraunt--specialdesign77.repl.co?for='+type,JSON.stringify([Inp.name, Inp.desc, Inp.img]))
+                await axios.post('https://back-restoraunt.vercel.app/api?for='+type,JSON.stringify([Inp.name, Inp.desc, Inp.img]))
                 .then(r=>Operatation(r.data, f))
                 
                 break;
             case 'useful':
-                await axios.post('https://restoraunt--specialdesign77.repl.co?for='+type,JSON.stringify([Inp.name, Inp.date, Inp.desc, Inp.time, Inp.num]))
+                await axios.post('https://back-restoraunt.vercel.app/api?for='+type,JSON.stringify([Inp.name, Inp.date, Inp.desc, Inp.time, Inp.num]))
                 .then(r=>Operatation(r.data, f))
                 break;
             case 'kitchen':
                 if (Inp.type) {
-                    await axios.post('https://restoraunt--specialdesign77.repl.co?for='+type,JSON.stringify([Inp.type, Inp.name,  Inp.desc, Inp.weight, Inp.price]))
+                    await axios.post('https://back-restoraunt.vercel.app/api?for='+type,JSON.stringify([Inp.type, Inp.name,  Inp.desc, Inp.weight, Inp.price]))
                 .then(r=>Operatation(r.data, f))
                 }else{
                     SetbackColor('red')
                 }
                 break;
             case 'special':
-                await axios.post('https://restoraunt--specialdesign77.repl.co?for='+type,JSON.stringify([Inp.desc, Inp.img, Inp.price, Inp.weight]))
+                await axios.post('https://back-restoraunt.vercel.app/api?for='+type,JSON.stringify([Inp.desc, Inp.img, Inp.price, Inp.weight]))
                 .then(r=>Operatation(r.data, f))
                 break;
             default:
@@ -173,23 +173,23 @@ const Polit = () => {
     const DoFix = async (type)=>{
         switch (type) {
             case 'useful':
-                await axios.patch('https://restoraunt--specialdesign77.repl.co?for='+type,JSON.stringify([FixId, Inp.name, Inp.date, Inp.desc, Inp.time, Inp.num]))
+                await axios.patch('https://back-restoraunt.vercel.app/api?for='+type,JSON.stringify([FixId, Inp.name, Inp.date, Inp.desc, Inp.time, Inp.num]))
                 window.location.reload()
                 break;
             case 'event':
-                await axios.patch('https://restoraunt--specialdesign77.repl.co?for='+type,JSON.stringify([FixId, Inp.name, Inp.desc, Inp.img]))
+                await axios.patch('https://back-restoraunt.vercel.app/api?for='+type,JSON.stringify([FixId, Inp.name, Inp.desc, Inp.img]))
                 window.location.reload()
                 break;
             case 'kitchen':
             if (Inp.type) {
-                await axios.patch('https://restoraunt--specialdesign77.repl.co?for='+type,JSON.stringify([FixId, Inp.name, Inp.desc, Inp.weight, Inp.price, Inp.type]))
+                await axios.patch('https://back-restoraunt.vercel.app/api?for='+type,JSON.stringify([FixId, Inp.name, Inp.desc, Inp.weight, Inp.price, Inp.type]))
                 window.location.reload()
             }else{
                 SetbackColor('red')
             }
                 break;
             case 'special':
-                await axios.patch('https://restoraunt--specialdesign77.repl.co?for='+type,JSON.stringify([FixId, Inp.desc, Inp.img, Inp.price, Inp.weight]))
+                await axios.patch('https://back-restoraunt.vercel.app/api?for='+type,JSON.stringify([FixId, Inp.desc, Inp.img, Inp.price, Inp.weight]))
                 window.location.reload()
                 break;
             default:

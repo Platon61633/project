@@ -7,7 +7,7 @@ const Useful = () => {
     const [Useful, SetUseful] = useState([])
 
     useEffect(()=> {
-        axios.get('https://php-vercel-snowy.vercel.app/api')
+        axios.get('https://back-restoraunt.vercel.app/api?for=useful')
         .then(rsp=> SetUseful(rsp.data))
     }, [])
     return(

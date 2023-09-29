@@ -11,7 +11,7 @@ const Resto = () => {
 
 
         useEffect(function GetEvents() {
-            axios.get('https://restoraunt--specialdesign77.repl.co?for=event')
+            axios.get('https://back-restoraunt.vercel.app/api?for=event')
             .then(resp=>SetEvents(resp.data))
         }, [])
 

@@ -16,7 +16,7 @@ const Kitcheny = ({Kitchen}) => {
     
     const GetKichen = async (e) => {
             SetLoader(true)
-            setTimeout(await axios.get('https://restoraunt--specialdesign77.repl.co?for=kitchen&type='+e)
+            setTimeout(await axios.get('https://back-restoraunt.vercel.app/api?for=kitchen&type='+e)
             .then(rsp=> SetGotKitchen(rsp.data)), 5000)
             SetLoader(false)
     }
