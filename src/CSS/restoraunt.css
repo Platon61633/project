@@ -221,6 +221,22 @@ textarea [placeholder=ТИП]{
     font-size: 3em;
 }
 
+.special-load{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .special-load p{
+    background-color: rgba(255, 255, 255, 0.371);
+    border-radius: 30%;
+  }
+
+  .special-load img{
+    width: 140px;
+    padding: 10px;
+    animation: load 1s infinite linear;
+  }
+
 
 
 

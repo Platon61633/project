@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../CSS/restoraunt.css';
 import resto3 from '../imagin/resto3ob.jpg'
 import arrowR from '../imagin/cil-arrow-circle-right.svg'
+import reload from '../imagin/reload-loading-svgrepo-com.svg';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -9,11 +10,18 @@ const Resto = () => {
 
     const [Events, SetEvents] = useState([])
 
+    const [Loader, SetLoader] = useState(false)
 
-        useEffect(function GetEvents() {
-            axios.get('https://back-restoraunt.vercel.app/api?for=event')
-            .then(resp=>SetEvents(resp.data))
+    const costyl = async ()=> {
+        await axios.get('https://back-restoraunt.vercel.app/api?for=event')
+        .then(resp=>SetEvents(resp.data))
+        SetLoader(false)}
+
+        useEffect(()=> {
+            SetLoader(true)
+            costyl()
         }, [])
+
 
 // -------------------parralax-------------------
 
@@ -43,6 +51,14 @@ const Resto = () => {
                 </span>
             </div> 
             <h1>АНОНСЫ И СОБЫТИЯ</h1>
+            {Loader?
+                <div className='special-load'>
+                    <p>
+                    <img src={reload} alt='Загрузка'/>
+                    </p>
+                </div>
+                :
+                <></>}
             <div className='events'>
                {Events.map(e=>
                 <div className='event'>

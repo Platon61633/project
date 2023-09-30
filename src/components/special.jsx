@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import cheescake from '../imagin/cheesecake.jpg';
 import axios from 'axios';
+import reload from '../imagin/reload-loading-svgrepo-com.svg';
 
 const Special = () => {
 
 
     const [ArrSpecial, SetArrSpecial] = useState([])
 
+    const [Loader, SetLoader] = useState(false)
+
+    const costyl = async ()=>{
+        await axios.get('https://back-restoraunt.vercel.app/api?for=special').then(r=>SetArrSpecial(r.data))
+        SetLoader(false)
+    }
 
     useEffect(()=> {
-        axios.get('https://back-restoraunt.vercel.app/api?for=special').then(r=>SetArrSpecial(r.data))
-
+        SetLoader(true)
+        costyl()
     }, [])
 
     
@@ -18,7 +25,14 @@ const Special = () => {
 
     return(
         <div className='special'>
-            
+            {Loader?
+                <div className='special-load'>
+                    <p>
+                    <img src={reload} alt='Загрузка'/>
+                    </p>
+                </div>
+                :
+                <></>}
             {
             ArrSpecial.map(e=>
                 <div className="special-post">

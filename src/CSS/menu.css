@@ -100,17 +100,13 @@
 }
 
 .reload p{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70px;
-  height: 70px;
   background-color: rgba(0, 0, 0, 0.371);
   border-radius: 20%;
 }
 
-.reload img{
-  width: 50px;
+.reload img, .special-load img{
+  width: 140px;
+  padding: 10px;
   animation: load 1s infinite linear;
 }
 
@@ -202,6 +198,16 @@
 .special{
   padding: 100px;
   background: url(../imagin/franch.webp);
+}
+
+.special-load{
+  display: flex;
+  justify-content: center;
+}
+
+.special-load p{
+  background-color: rgba(255, 255, 255, 0.371);
+  border-radius: 30%;
 }
 
 .special-post img{

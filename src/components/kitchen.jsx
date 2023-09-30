@@ -15,6 +15,7 @@ const Kitcheny = ({Kitchen}) => {
     const [Loader, SetLoader] = useState(false)
     
     const GetKichen = async (e) => {
+            SetGotKitchen([])
             SetLoader(true)
             await axios.get('https://back-restoraunt.vercel.app/api?for=kitchen&type='+e)
             .then(rsp=> SetGotKitchen(rsp.data))
