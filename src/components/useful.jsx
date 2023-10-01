@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import '../CSS/restoraunt.css';
 import axios from 'axios';
+import reload from '../imagin/reload-loading-svgrepo-com.svg';
 
 const Useful = () => {
 
     const [Useful, SetUseful] = useState([])
 
-    useEffect(()=> {
-        axios.get('https://back-restoraunt.vercel.app/api?for=useful')
+    const [Loader, SetLoader] = useState(false)
+
+    const costyl = async ()=>{
+        await axios.get('https://back-restoraunt.vercel.app/api?for=useful')
         .then(rsp=> SetUseful(rsp.data))
+        SetLoader(false)
+    }
+
+    useEffect(()=> {
+        SetLoader(true)
+        costyl()
     }, [])
     return(
         <div className='useful'>
@@ -26,6 +35,15 @@ const Useful = () => {
                 </div>
             </div> */}
             
+            {Loader?
+                <div className='special-load'>
+                    <p>
+                    <img src={reload} alt='Загрузка'/>
+                    </p>
+                </div>
+                :
+                <></>}
+
             {Useful.map(
                 e=>
                 <div className="sation">
