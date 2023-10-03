@@ -10,25 +10,19 @@
     margin: 300px 0 150px;
     overflow: hidden;
     text-shadow: 2px 2px 4px red, 0 0 6px blue;
-    /* background-color: azure;
-    transition: all 0.25s;
-    padding: 20px; */
 }
 
+.autograph:hover{
 
-/* .autograph:hover, 
-.autograph:focus {
-    animation: pulse 1s;
-    box-shadow: 0 0 0 2em rgb(#ff0000);
-    border-color: yellow;
-    color: #fff;
+
+}
+
+/* @keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
 } */
 
-
-
-/* @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 yellow; }
-} */
 
 
 .ggap{
@@ -50,12 +44,10 @@
 
 .xonb{
     animation: moveL 1.5s forwards linear;
-    /* transition: all 1s; */
 }
 
 .studio{
     animation: moveR 1.5s forwards linear;
-    transition: all 1s;
 }
 
 @keyframes moveR{
@@ -65,21 +57,12 @@
     60%{
         transform: translateX(0);
     }
-    /* 79%{
-
-    } */
     90%{
         transform: skewX(-10deg);
     }
     100%{
         transform: skewX(0deg);
     }
-    /* 90%{
-        transform: translateX(30px);
-    }
-    99%{
-        transform: translateX(0);
-    } */
 }
 
 @keyframes moveL{
@@ -89,23 +72,10 @@
     60%{
         transform: translateX(0);
     }
-    /* 79%{
-
-    } */
     90%{
         transform: skewX(20deg);
     }
     100%{
         transform: skewX(0deg);
     }
-    /* 90%{
-        transform: translateX(-30px);
-    }
-    99%{
-        transform: translateX(0);
-    } */
 }
-
-/* .autograph:hover{
-
-} */
