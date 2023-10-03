@@ -1,25 +1,42 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../CSS/autograph.css';
 
 const Autograph = () => {
+    
+const containerRef = useRef(null)
+const [ isVisible, setIsVisible ] = useState(false)
+
+
+const callbackFunction = (entries) => {
+    const [ entry ] = entries
+    if (!isVisible) {
+        setIsVisible(entry.isIntersecting)
+    }
+}
+
+const options = {
+    rootMargin: "150px",
+    threshold:1.0
+}
+
+useEffect(() => {
+
+    const observer = new IntersectionObserver(callbackFunction, options)
+    if (containerRef.current) observer.observe(containerRef.current)
+
+    return () => {
+    if(containerRef.current) observer.unobserve(containerRef.current)
+    }
+}, [])
+
     return(
-            <a href='' className='autograph'>
-                <div className="red">
-                    <div className="orange">
-                        <div className="yellow">
-                            <div className="green">
-                                <div className="blue">
-                                    <div className="dark-blue">
-                                        <div className="purple">
-                                            <span>XOnBeats Studio</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div>
+            <a href='' ref={containerRef} className={`autograph ${isVisible?'ggap':''}`}>
+                <div className={isVisible?'xonb':''}>XOnBeats </div>
+                <div className={isVisible?'studio':''}>Studio</div>
             </a>
+            
+            </div>
     );
 };
 

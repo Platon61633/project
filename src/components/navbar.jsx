@@ -99,7 +99,7 @@ const [CollapseMenu, SetCollapseMenu] = useState(false)
                     {open?
                     <div className="collapse" onClick={()=>setOpen(false)}>
                         <div className="collapse-act" onClick={(e)=>e.stopPropagation()}>
-                            <img src={logo} width={60} alt="logo" />
+                            <Link to='/' onClick={()=>setOpen(false)}><img src={logo} width={60} alt="logo" /></Link>
                             <div onClick={()=>{
                             SetCollapseResto(CollapseResto?false:true)
                             SetCollapseMenu(false)

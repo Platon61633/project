@@ -2,9 +2,15 @@
     display: flex;
     justify-content: space-between;
     color: white;
-    font-size: 30px;
+    font-size: 2em;
     flex-wrap: wrap;
     gap: 15px;
     background-color: black;
     padding: 80px 10px 40px;
+}
+
+@media  (max-width: 1224px){
+    .footer{
+        font-size: 1.5em;
+    }
 }

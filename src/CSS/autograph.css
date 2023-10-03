@@ -1,50 +1,111 @@
 .autograph{
-    display: block;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     color: aqua;
     text-align: center;
     border: 20px solid black;
-    font-size: 50px;
+    font-size: 3em;
     font-family: 'Rationale';
-    margin-top: 300px;
+    margin: 300px 0 150px;
+    overflow: hidden;
+    text-shadow: 2px 2px 4px red, 0 0 6px blue;
+    /* background-color: azure;
+    transition: all 0.25s;
+    padding: 20px; */
 }
-.autograph div{
-    border: 20px solid black;
-}
+
+
+/* .autograph:hover, 
+.autograph:focus {
+    animation: pulse 1s;
+    box-shadow: 0 0 0 2em rgb(#ff0000);
+    border-color: yellow;
+    color: #fff;
+} */
 
 
 
-/* --hover-- */
+/* @keyframes pulse {
+  0% { box-shadow: 0 0 0 0 yellow; }
+} */
 
-.autograph:hover{
-    border: 20px groove blueviolet;
 
+.ggap{
+    animation: .4s gapp 1.35s forwards linear;
 }
 
-.red:hover{
-    border: 20px groove red;
-    color: red
+@keyframes gapp {
+    from{
+        gap: 5px;
+    }
+    to{
+        gap: 0.3em;
+    }
 }
-.orange:hover{
-    border: 20px groove orange;
-    color: orange
+
+.visible{
+    padding: 150px;
 }
-.yellow:hover{
-    border: 20px groove yellow;
-    color: yellow
+
+.xonb{
+    animation: moveL 1.5s forwards linear;
+    /* transition: all 1s; */
 }
-.green:hover{
-    border: 20px groove green;
-    color: green
+
+.studio{
+    animation: moveR 1.5s forwards linear;
+    transition: all 1s;
 }
-.blue:hover{
-    border: 20px groove blue;
-    color: blue;
+
+@keyframes moveR{
+    0%{
+        transform: translateX(50vw);
+    }
+    60%{
+        transform: translateX(0);
+    }
+    /* 79%{
+
+    } */
+    90%{
+        transform: skewX(-10deg);
+    }
+    100%{
+        transform: skewX(0deg);
+    }
+    /* 90%{
+        transform: translateX(30px);
+    }
+    99%{
+        transform: translateX(0);
+    } */
 }
-.dark-blue:hover{
-    border: 20px groove darkblue;
-    color: darkblue;
+
+@keyframes moveL{
+    0%{
+        transform: translateX(-50vw);
+    }
+    60%{
+        transform: translateX(0);
+    }
+    /* 79%{
+
+    } */
+    90%{
+        transform: skewX(20deg);
+    }
+    100%{
+        transform: skewX(0deg);
+    }
+    /* 90%{
+        transform: translateX(-30px);
+    }
+    99%{
+        transform: translateX(0);
+    } */
 }
-.purple:hover{
-    border: 20px groove purple;
-    color: aqua;
-}
+
+/* .autograph:hover{
+
+} */
