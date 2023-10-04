@@ -6,12 +6,10 @@ const Autograph = () => {
 const containerRef = useRef(null)
 const [ isVisible, setIsVisible ] = useState(false)
 
-
 const callbackFunction = (entries) => {
     const [ entry ] = entries
-    if (!isVisible) {
-        setIsVisible(entry.isIntersecting)
-    }
+    setIsVisible(entry.isIntersecting)
+    
 }
 
 const options = {
@@ -30,13 +28,12 @@ useEffect(() => {
 }, [])
 
     return(
-        <div>
-            <a href='' ref={containerRef} className={`autograph ${isVisible?'ggap':''}`}>
+        <div className='autograph'>
+            <a href='' ref={containerRef} className={`anim-auto ${isVisible?'ggap':''}`}>
                 <div className={isVisible?'xonb':''}>XOnBeats </div>
                 <div className={isVisible?'studio':''}>Studio</div>
             </a>
-            
-            </div>
+        </div>
     );
 };
 

@@ -1,6 +1,12 @@
 .autograph{
     display: flex;
     justify-content: center;
+    overflow: hidden;
+}
+
+.anim-auto{
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     color: aqua;
     text-align: center;
@@ -8,21 +14,59 @@
     font-size: 3em;
     font-family: 'Rationale';
     margin: 300px 0 150px;
-    overflow: hidden;
     text-shadow: 2px 2px 4px red, 0 0 6px blue;
+    position: relative;
+    transition: all 0.7s cubic-bezier(0.42, 0, 0.58, 1);
+    padding: 0.5em;
+    border-radius: 100px;
+    border: 2px solid transparent;
 }
 
-.autograph:hover{
 
-
+@keyframes ani-b {
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 50%;
+    }
 }
+
+.anim-auto::after, .anim-auto::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 2em;
+    mix-blend-mode: overlay;
+    /* background-color: white; */
+    transition: all 0.7s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.anim-auto::before{
+    left: 0;
+    background-color: rgb(255, 0, 0);
+}
+
+.anim-auto::after{
+    left: 100%;
+    /* z-index: -1; */
+    background-color: blue;
+}
+
+.anim-auto:hover:before {
+    width: 100%;
+  }
+  .anim-auto:hover:after {
+    width: 100%;
+    left: 0;
+  }
 
 /* @keyframes glowing {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 } */
-
 
 
 .ggap{
@@ -35,6 +79,8 @@
     }
     to{
         gap: 0.3em;
+        background-color: rgb(37, 37, 37);
+        border: 2px solid white;
     }
 }
 
