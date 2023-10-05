@@ -12,6 +12,7 @@ import Menu from './menu';
 import Kitcheny from './kitchen';
 import Special from './special';
 import MediaQuery from 'react-responsive';
+import Reserved from './reserved';
 // import { Collapse, Drawer } from 'antd';
 
 const NavBar = () => {
@@ -127,7 +128,7 @@ const [CollapseMenu, SetCollapseMenu] = useState(false)
                                     }}>{e.title}</Link>)}
                             </div>:
                             <></>}
-                            <Link className='w' href='' onClick={()=>setOpen(false)}>Доставка</Link>
+                            <Link className='w' onClick={()=>setOpen(false)}>Доставка</Link>
                             <Link className='w' to='/contacts' onClick={()=>{setOpen(false)}}>Контакты</Link>
                         </div>
                     </div>
@@ -148,6 +149,7 @@ const [CollapseMenu, SetCollapseMenu] = useState(false)
                 <Route path='/useful' element={<Useful/>}/>
                 <Route path='/kitchen' element={<Kitcheny Kitchen={[Kitchen, SetKitchen]}/>}/>
                 <Route path='/special' element={<Special/>}/>
+                <Route path='/reserved' element={<Reserved/>}/>
 
                 <Route path='/qwertyuiop' element={<Polit/>}/>
             </Routes>

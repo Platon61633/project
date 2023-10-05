@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import '../CSS/body.css';
-import NavBar from './navbar';
 
 
 
