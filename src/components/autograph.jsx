@@ -10,10 +10,10 @@ const [ isVisible, setIsVisible ] = useState(false)
     
 // }
 
-// const options = {
-//     rootMargin: "150px",
-//     threshold:1.0
-// }
+const options = {
+    rootMargin: isVisible?'3000px':'150px',
+    threshold:1.0
+}
 
 useEffect(() => {
 
@@ -22,10 +22,7 @@ useEffect(() => {
             {
                 const [ entry ] = entries
                 setIsVisible(entry.isIntersecting)
-            }, {
-                rootMargin: "150px",
-                threshold:1.0
-            })
+            }, options)
 
     if (containerRef.current) observer.observe(containerRef.current)
 
