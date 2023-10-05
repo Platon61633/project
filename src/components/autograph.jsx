@@ -6,9 +6,6 @@ const Autograph = () => {
 const containerRef = useRef(null)
 const [ isVisible, setIsVisible ] = useState(false)
 
-// const callbackFunction = 
-    
-// }
 
 const options = {
     rootMargin: isVisible?'3000px':'150px',
