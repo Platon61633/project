@@ -6,20 +6,27 @@ const Autograph = () => {
 const containerRef = useRef(null)
 const [ isVisible, setIsVisible ] = useState(false)
 
-const callbackFunction = (entries) => {
-    const [ entry ] = entries
-    setIsVisible(entry.isIntersecting)
+// const callbackFunction = 
     
-}
+// }
 
-const options = {
-    rootMargin: "150px",
-    threshold:1.0
-}
+// const options = {
+//     rootMargin: "150px",
+//     threshold:1.0
+// }
 
 useEffect(() => {
 
-    const observer = new IntersectionObserver(callbackFunction, options)
+    const observer = new IntersectionObserver(
+        (entries) => 
+            {
+                const [ entry ] = entries
+                setIsVisible(entry.isIntersecting)
+            }, {
+                rootMargin: "150px",
+                threshold:1.0
+            })
+
     if (containerRef.current) observer.observe(containerRef.current)
 
     return () => {

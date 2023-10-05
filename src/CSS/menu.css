@@ -244,7 +244,7 @@
   font-size: 2em;
 }
 
-@media  (max-width: 1224px){
+@media  (max-width: 900px){
 
   .special{
     padding: 20px 0 60px;

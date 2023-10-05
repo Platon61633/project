@@ -240,7 +240,7 @@ textarea [placeholder=ТИП]{
 
 
 
-@media  (max-width: 1224px){
+@media  (max-width: 900px){
     .start{
         padding-top: 0;
         grid-template-columns: 1fr;
@@ -268,7 +268,7 @@ textarea [placeholder=ТИП]{
     }
 }
 
-@media  (max-width: 1224px){
+@media  (max-width: 900px){
     .useful{
         font-size: 0.6em;
         padding: 20px 0;

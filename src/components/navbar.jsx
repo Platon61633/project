@@ -57,7 +57,7 @@ const [CollapseMenu, SetCollapseMenu] = useState(false)
     return(
         
         <BrowserRouter>
-            <MediaQuery minWidth={1224}>
+            <MediaQuery minWidth={900}>
                 <nav className='desktop'>
                     <Link className='nav-item w' to='/restoraunt' onMouseOver={resto}>Ресторан</Link>
                     <Link className='nav-item w' to='/menu' onMouseOver={menu}>Меню</Link>
@@ -84,7 +84,7 @@ const [CollapseMenu, SetCollapseMenu] = useState(false)
 
 {/* ----------------mobile---------------------- */}
 
-            <MediaQuery maxWidth={1224}>
+            <MediaQuery maxWidth={900}>
                 <nav className='mobile'>
                     <div></div>
                     <Link className='w logo logo-mobile' to='/body'>
