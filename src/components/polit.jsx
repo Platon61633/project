@@ -25,23 +25,11 @@ const Polit = () => {
 
     const events = useRef(null);
     const menu = useRef(null);
+    const special = useRef(null)
 
 
-    const Go = (type)=>{
-        switch (type) {
-            case 'events':
-                events.current?.scrollIntoView({behavior: 'smooth'});
-                break;
-        
-            case 'menu':
-                menu.current?.scrollIntoView({behavior: 'smooth'});
-                break;
-            default:
+    const Go = (type)=>type.current?.scrollIntoView({behavior: 'smooth'});
 
-                break;
-        }
-        
-    }
 
 
     
@@ -205,8 +193,9 @@ const Polit = () => {
     return(
         <div className='polit'>
             <h1 className='important'>
-                <div onClick={()=>Go('events')}>АНОНСЫ И СОБЫТИЯ</div>
-                <div onClick={()=>Go('menu')}>МЕНЮ</div>
+                <div onClick={()=>Go(events)}>АНОНСЫ И СОБЫТИЯ</div>
+                <div onClick={()=>Go(menu)}>МЕНЮ</div>
+                <div onClick={()=>Go(special)}>СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ</div>
             </h1>
             {gg?
             <div className='panlOP' onClick={()=>SeTGg(false)}>
@@ -249,11 +238,11 @@ const Polit = () => {
                         )}
                         <tr>
                             <td>№</td>
-                            <td><textarea placeholder='имя' type="text" onChange={e=> SetInp({...Inp, name: e.target.value})}/></td>
-                            <td><textarea placeholder='дата' type="text" onChange={e=> SetInp({...Inp, date: e.target.value})}/></td>
-                            <td><textarea placeholder='описание' type="text" onChange={e=> SetInp({...Inp, desc: e.target.value})}/></td>
-                            <td><textarea placeholder='время' type="text" onChange={e=> SetInp({...Inp, time: e.target.value})}/></td>
-                            <td><textarea placeholder='телефон' type="text" onChange={e=> SetInp({...Inp, num: e.target.value})}/></td>
+                            <td><textarea placeholder='имя' onChange={e=> SetInp({...Inp, name: e.target.value})}/></td>
+                            <td><textarea placeholder='дата' onChange={e=> SetInp({...Inp, date: e.target.value})}/></td>
+                            <td><textarea placeholder='описание' onChange={e=> SetInp({...Inp, desc: e.target.value})}/></td>
+                            <td><textarea placeholder='время' onChange={e=> SetInp({...Inp, time: e.target.value})}/></td>
+                            <td><textarea placeholder='телефон' onChange={e=> SetInp({...Inp, num: e.target.value})}/></td>
                             <td colSpan={2}></td>
                         </tr>
                         <tr>
@@ -275,19 +264,19 @@ const Polit = () => {
                             <tbody>
                                 <td>{FixId}</td>
                                 <td>
-                                    <textarea placeholder='имя' value={Inp.name} type="text" onChange={e=> SetInp({...Inp, name: e.target.value})}/>
+                                    <textarea placeholder='имя' value={Inp.name} onChange={e=> SetInp({...Inp, name: e.target.value})}/>
                                 </td>
                                 <td>
-                                    <textarea placeholder='дата' value={Inp.date} type="text" onChange={e=> SetInp({...Inp, date: e.target.value})}/>
+                                    <textarea placeholder='дата' value={Inp.date} onChange={e=> SetInp({...Inp, date: e.target.value})}/>
                                 </td>
                                 <td>
-                                    <textarea placeholder='описание' value={Inp.desc} type="text" onChange={e=> SetInp({...Inp, desc: e.target.value})}/>
+                                    <textarea placeholder='описание' value={Inp.desc} onChange={e=> SetInp({...Inp, desc: e.target.value})}/>
                                 </td>
                                 <td>
-                                    <textarea placeholder='время' value={Inp.time} type="text" onChange={e=> SetInp({...Inp, time: e.target.value})}/>
+                                    <textarea placeholder='время' value={Inp.time} onChange={e=> SetInp({...Inp, time: e.target.value})}/>
                                 </td>
                                 <td>
-                                    <textarea placeholder='номер' value={Inp.num} type="text" onChange={e=> SetInp({...Inp, num: e.target.value})}/>
+                                    <textarea placeholder='номер' value={Inp.num} onChange={e=> SetInp({...Inp, num: e.target.value})}/>
                                 </td>
                                 <tr> <th colSpan={6} className='cursor-p' onClick={()=>DoFix('useful')}>Изменить</th></tr>
                                 <tr> <th colSpan={6} className='cursor-p' onClick={()=>SetFixFU(false)}>Назад</th></tr>
@@ -331,9 +320,9 @@ const Polit = () => {
                         )}
                         <tr>
                             <td>№</td>
-                            <td><textarea placeholder='имя' type="text" onChange={e=> SetInp({...Inp, name: e.target.value})}/></td>
-                            <td><textarea placeholder='описание' type="text" onChange={e=> SetInp({...Inp, desc: e.target.value})}/></td>
-                            <td><textarea placeholder='фото (url)' type="text" onChange={e=> SetInp({...Inp, img: e.target.value})}/></td>
+                            <td><textarea placeholder='имя' onChange={e=> SetInp({...Inp, name: e.target.value})}/></td>
+                            <td><textarea placeholder='описание' onChange={e=> SetInp({...Inp, desc: e.target.value})}/></td>
+                            <td><textarea placeholder='фото (url)' onChange={e=> SetInp({...Inp, img: e.target.value})}/></td>
                             <td colSpan={2}></td>
                         </tr>
                         <tr>
@@ -353,13 +342,13 @@ const Polit = () => {
                             <tbody>
                                 <td>{FixId}</td>
                                 <td>
-                                    <textarea placeholder='имя' value={Inp.name} type="text" onChange={e=> SetInp({...Inp, name: e.target.value})}/>
+                                    <textarea placeholder='имя' value={Inp.name} onChange={e=> SetInp({...Inp, name: e.target.value})}/>
                                 </td>
                                 <td>
-                                    <textarea placeholder='описание' value={Inp.desc} type="text" onChange={e=> SetInp({...Inp, desc: e.target.value})}/>
+                                    <textarea placeholder='описание' value={Inp.desc} onChange={e=> SetInp({...Inp, desc: e.target.value})}/>
                                 </td>
                                 <td>
-                                    <textarea placeholder='фото' value={Inp.img} type="text" onChange={e=> SetInp({...Inp, img: e.target.value})}/>
+                                    <textarea placeholder='фото' value={Inp.img} onChange={e=> SetInp({...Inp, img: e.target.value})}/>
                                 </td>
                                 <tr> <th colSpan={4} className='cursor-p' onClick={()=>DoFix('event')}>Изменить</th></tr>
                                 <tr> <th colSpan={4} className='cursor-p' onClick={()=>SetFixFE(false)}>Назад</th></tr>
@@ -429,16 +418,16 @@ const Polit = () => {
                     <tr>
                             <td>№</td>
                             <td>
-                                <textarea placeholder='имя' value={Inp.name} type="text" onChange={e=> SetInp({...Inp, name: e.target.value})}/>
+                                <textarea placeholder='имя' value={Inp.name} onChange={e=> SetInp({...Inp, name: e.target.value})}/>
                             </td>
                             <td>
-                                <textarea placeholder='описание' value={Inp.desc} type="text" onChange={e=> SetInp({...Inp, desc: e.target.value})}/>
+                                <textarea placeholder='описание' value={Inp.desc} onChange={e=> SetInp({...Inp, desc: e.target.value})}/>
                             </td>
                             <td>
-                                <textarea placeholder='вес' value={Inp.weight} type="text" onChange={e=> SetInp({...Inp, weight: e.target.value})}/>
+                                <textarea placeholder='вес' value={Inp.weight} onChange={e=> SetInp({...Inp, weight: e.target.value})}/>
                             </td>
                             <td>
-                                <textarea placeholder='цена' value={Inp.price} type="text" onChange={e=> SetInp({...Inp, price: e.target.value})}/>
+                                <textarea placeholder='цена' value={Inp.price} onChange={e=> SetInp({...Inp, price: e.target.value})}/>
                             </td>
                             <td colSpan={2}></td>
                         </tr>
@@ -467,16 +456,16 @@ const Polit = () => {
                                     <option value={e[0][1]}>{e[0][1]}</option>)}
                                 </select>
                                 <td>
-                                    <textarea placeholder='имя' value={Inp.name} type="text" onChange={e=> SetInp({...Inp, name: e.target.value})}/>
+                                    <textarea placeholder='имя' value={Inp.name} onChange={e=> SetInp({...Inp, name: e.target.value})}/>
                                 </td>
                                 <td>
-                                    <textarea placeholder='описание' value={Inp.desc} type="text" onChange={e=> SetInp({...Inp, desc: e.target.value})}/>
+                                    <textarea placeholder='описание' value={Inp.desc} onChange={e=> SetInp({...Inp, desc: e.target.value})}/>
                                 </td>
                                 <td>
-                                    <textarea placeholder='вес' value={Inp.weight} type="text" onChange={e=> SetInp({...Inp, weight: e.target.value})}/>
+                                    <textarea placeholder='вес' value={Inp.weight} onChange={e=> SetInp({...Inp, weight: e.target.value})}/>
                                 </td>
                                 <td>
-                                    <textarea placeholder='цена' value={Inp.price} type="text" onChange={e=> SetInp({...Inp, price: e.target.value})}/>
+                                    <textarea placeholder='цена' value={Inp.price} onChange={e=> SetInp({...Inp, price: e.target.value})}/>
                                 </td>
                                 <tr> <th colSpan={5} className='cursor-p' onClick={()=>DoFix('kitchen')}>Изменить</th></tr>
                                 <tr> <th colSpan={5} className='cursor-p' onClick={()=>SetFixFM(false)}>Назад</th></tr>
@@ -489,11 +478,11 @@ const Polit = () => {
             </div>
 
             {/* -------------------SPECIAL------------------------ */}
-            <div className='tbl'>
+            <div className='tbl' ref={special}>
                 <table>
                     <thead>
                         <tr>
-                            <th colSpan={7}>СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ</th>
+                            <th colSpan={7} >СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ</th>
                         </tr>
                         <tr>
                             <th>id</th>
@@ -521,10 +510,10 @@ const Polit = () => {
                         )}
                         <tr>
                             <td>№</td>
-                            <td><textarea placeholder='описание' type="text" onChange={e=> SetInp({...Inp, desc: e.target.value})}/></td>
-                            <td><textarea placeholder='фото' type="text" onChange={e=> SetInp({...Inp, img: e.target.value})}/></td>
-                            <td><textarea placeholder='цена' type="text" onChange={e=> SetInp({...Inp, price: e.target.value})}/></td>
-                            <td><textarea placeholder='вес' type="text" onChange={e=> SetInp({...Inp, weight: e.target.value})}/></td>
+                            <td><textarea placeholder='описание' onChange={e=> SetInp({...Inp, desc: e.target.value})}/></td>
+                            <td><textarea placeholder='фото' onChange={e=> SetInp({...Inp, img: e.target.value})}/></td>
+                            <td><textarea placeholder='цена' onChange={e=> SetInp({...Inp, price: e.target.value})}/></td>
+                            <td><textarea placeholder='вес' onChange={e=> SetInp({...Inp, weight: e.target.value})}/></td>
                             <td colSpan={2}></td>
                         </tr>
                         <tr>
@@ -545,16 +534,16 @@ const Polit = () => {
                             <tbody>
                                 <td>{FixId}</td>
                                 <td>
-                                    <textarea placeholder='описание' value={Inp.desc} type="text" onChange={e=> SetInp({...Inp, desc: e.target.value})}/>
+                                    <textarea placeholder='описание' value={Inp.desc} onChange={e=> SetInp({...Inp, desc: e.target.value})}/>
                                 </td>
                                 <td>
-                                    <textarea placeholder='фото' value={Inp.img} type="text" onChange={e=> SetInp({...Inp, img: e.target.value})}/>
+                                    <textarea placeholder='фото' value={Inp.img} onChange={e=> SetInp({...Inp, img: e.target.value})}/>
                                 </td>
                                 <td>
-                                    <textarea placeholder='цена' value={Inp.price} type="text" onChange={e=> SetInp({...Inp, price: e.target.value})}/>
+                                    <textarea placeholder='цена' value={Inp.price} onChange={e=> SetInp({...Inp, price: e.target.value})}/>
                                 </td>
                                 <td>
-                                    <textarea placeholder='вес' value={Inp.weight} type="text" onChange={e=> SetInp({...Inp, weight: e.target.value})}/>
+                                    <textarea placeholder='вес' value={Inp.weight} onChange={e=> SetInp({...Inp, weight: e.target.value})}/>
                                 </td>
                                 <tr> <th colSpan={6} className='cursor-p' onClick={()=>DoFix('special')}>Изменить</th></tr>
                                 <tr> <th colSpan={6} className='cursor-p' onClick={()=>SetFixFS(false)}>Назад</th></tr>

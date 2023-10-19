@@ -38,7 +38,7 @@ const Special = () => {
                 <div className="special-post">
                 <h1>{e[1]}</h1>
                 <img src={cheescake} alt={e[2]} />
-                <p>Цена: {e[3]}р - {e[4]}г</p>
+                <p>Цена: {e[3]}р - {e[4]}</p>
             </div>
                 )
                 }
