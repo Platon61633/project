@@ -13,7 +13,7 @@ const Resto = () => {
     const [Loader, SetLoader] = useState(false)
 
     const costyl = async ()=> {
-        await axios.get('https://back-restoraunt.vercel.app/api?for=event')
+        await axios.get('https://node')
         .then(resp=>SetEvents(resp.data))
         SetLoader(false)}
 
