@@ -13,7 +13,7 @@ const Resto = () => {
     const [Loader, SetLoader] = useState(false)
 
     const costyl = async ()=> {
-        await axios.get('https://node')
+        await axios.get('http://localhost:3000/api')
         .then(resp=>SetEvents(resp.data))
         SetLoader(false)}
 
