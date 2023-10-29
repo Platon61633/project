@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import cheescake from '../imagin/cheesecake.jpg';
+import cheescake from 'https://github.com/Platon61633/backRestoraunt/blob/main/api/img/card_of_wine.jpg?raw=true';
 import axios from 'axios';
 import reload from '../imagin/reload-loading-svgrepo-com.svg';
 
