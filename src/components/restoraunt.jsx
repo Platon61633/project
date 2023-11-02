@@ -62,7 +62,7 @@ const Resto = () => {
             <div className='events'>
                {Events.map(e=>
                 <div className='event'>
-                    <img src={resto3} alt='img'/>
+                    <img src={`https://back-restoraunt.vercel.app/img/${e[3]}`} alt='img'/>
                     <p>
                         <span>{e[1]}</span>
                         <h1>{e[2]}</h1>

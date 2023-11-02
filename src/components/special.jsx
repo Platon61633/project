@@ -37,7 +37,7 @@ const Special = () => {
             ArrSpecial.map(e=>
                 <div className="special-post">
                 <h1>{e[1]}</h1>
-                <img src={cheescake} alt={e[2]} />
+                <img src={`https://back-restoraunt.vercel.app/img/${e[2]}`} alt={e[2]} />
                 <p>Цена: {e[3]}р - {e[4]}</p>
             </div>
                 )
