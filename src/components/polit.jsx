@@ -13,13 +13,13 @@ const Polit = () => {
     const [ArrEvents, SetArrEvents] = useState([])
     const [ArrSpecial, SetArrSpecial] = useState([])
     const [ArrKitchen, SetArrKitchen] = useState([false])
+    const [ArrReserved, SetArrReserved] = useState([[]])
 
 
     const [fixFE, SetFixFE] = useState(false)
     const [fixFU, SetFixFU] = useState(false)
     const [fixFM, SetFixFM] = useState(false)
     const [fixFS, SetFixFS] = useState(false)
-
 
     const [FixId, SetFixId] = useState(null)
 
@@ -41,8 +41,10 @@ const Polit = () => {
         .then(rsp=> SetArrUseful(rsp.data))
         axios.get('https://back-restoraunt.vercel.app/api?for=special')
         .then(rsp=> SetArrSpecial(rsp.data))
-
+        axios.get('https://back-restoraunt.vercel.app/api?for=reserved')
+        .then(r=>SetArrReserved(r.data))
     }, [])
+
 
 
     const getKitchen = async (e)=>{
@@ -192,6 +194,44 @@ const Polit = () => {
 
     return(
         <div className='polit'>
+{/* --------------REVERSED---------------------------------- */}
+
+            
+                <div className="tbl">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colSpan={7}>РЕЗЕРВ СТОЛА</th>
+                            </tr>
+                            <tr>
+                                <th>№</th>
+                                <th>Фамилия, Имя</th>
+                                <th>Дата</th>
+                                <th>Время</th>
+                                <th>Телефон</th>
+                                <th>Кол-во человек</th>
+                                <th>Доп. информация</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {ArrReserved.map((e, i)=>
+                                <tr>
+                                    <td>{i+1}</td>
+                                    <td>{e[2]} {e[1]}</td>
+                                    <td>{e[3]}</td>
+                                    <td>{e[4]}</td> 
+                                    <td>{e[5]}</td> 
+                                    <td>{e[6]}</td> 
+                                    <td>{e[7]}</td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
+                
+
+
+
             <h1 className='important'>
                 <div onClick={()=>Go(events)}>АНОНСЫ И СОБЫТИЯ</div>
                 <div onClick={()=>Go(menu)}>МЕНЮ</div>
@@ -204,6 +244,8 @@ const Polit = () => {
             </div>
             :<div></div>}
 
+
+                
 
             {/* ---------------------   USEFUL----------------------- */}
             <div className='tbl'>

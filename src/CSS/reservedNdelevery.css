@@ -43,6 +43,10 @@
     background-color: rgb(159, 0, 0);
 }
 
+.submit-r:active{
+        background-color: rgb(219, 255, 14);
+}
+
 .inputs-r{
     display: grid;
     width: 100%;
@@ -58,3 +62,46 @@
     font-size: 2em;
     margin-bottom: 40px;
 }
+
+.reserved-sucs{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.622);
+}
+
+.reserved-sucs span{
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    padding: 30px;
+    border: 5px solid green;
+    border-radius: 20%;
+}
+
+.reserved-sucs p{
+    width: 500px;
+}
+
+.reserved-load{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.37);
+  }
+  
+  .reserved-load p{
+    background-color: rgba(255, 255, 255, 0.371);
+    border-radius: 30%;
+  }
+
+  .reserved-load img{
+    width: 140px;
+    height: 140px;
+    padding: 10px;
+    animation: load 1s infinite linear;
+  }
