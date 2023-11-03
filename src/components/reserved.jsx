@@ -75,7 +75,7 @@ const Reserved = () => {
                     <input placeholder='Имя'  type="text" onChange={e=>SetDataReserver({...DataReserver, name: e.target.value})}/>
                     <input placeholder='Фамилия' type="text" onChange={e=>SetDataReserver({...DataReserver, surname: e.target.value})}/>
                     <input placeholder='Дата' type="date" max='2024-12-31' onChange={e=>SetDataReserver({...DataReserver, date: e.target.value})}/>
-                    <input placeholder='Время' type="time" onChange={e=>SetDataReserver({...DataReserver, time: e.target.value})}/>
+                    <input placeholder='Время' type="time" min='08:00' max='23:00' onChange={e=>SetDataReserver({...DataReserver, time: e.target.value})}/>
                     <input placeholder='Телефон' type="tel" onChange={e=>SetDataReserver({...DataReserver, tel: e.target.value})}/>
                     <div style={{width: '100%'}}>
                     <input type="text" placeholder={DataReserver.kolvo+' человек(а)'} onChange={e=>SetDataReserver({...DataReserver, kolvo: e.target.value})}/>
