@@ -3,6 +3,7 @@ import '../CSS/reservedNdelevery.css'
 import resto from '../imagin/resto.jpg'
 import reload from '../imagin/reload-loading-svgrepo-com.svg';
 import axios from 'axios';
+import MediaQuery from 'react-responsive';
 
 
 const Reserved = () => {
@@ -65,7 +66,9 @@ const Reserved = () => {
             :
             <></>
             }
-            <img src={resto} alt="" />
+            <MediaQuery minWidth={900}>
+                <img src={resto} alt="" />
+            </MediaQuery>
             <div className='info-r'>
                 <h1>РЕЗЕРВ СТОЛА</h1>
                 <div className="inputs-r">

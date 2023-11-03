@@ -105,3 +105,9 @@
     padding: 10px;
     animation: load 1s infinite linear;
   }
+
+  @media (max-width: 900px){
+    .reserved{
+        display: flex;
+    }
+  }
