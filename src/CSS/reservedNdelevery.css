@@ -82,7 +82,7 @@
 }
 
 .reserved-sucs p{
-    width: 500px;
+    max-width: 500px;
 }
 
 .reserved-load{
