@@ -19,25 +19,44 @@ const Reserved = () => {
         info: null
     })
 
-    const [Sucsessfull, SetSucsessfull] = useState(false)
+    const [Sucsessfull, SetSucsessfull] = useState([false, false, [1,2]])
 
     const SubmitData = async ()=>{
-        SetSucsessfull(-1)
-        await axios.post('https://back-restoraunt.vercel.app/api?for=reserved', JSON.stringify([
-            DataReserver.name, 
-            DataReserver.surname, 
-            DataReserver.date, 
-            DataReserver.time,
-            DataReserver.tel,
-            DataReserver.kolvo,
-            DataReserver.info]))
-        .then(r=>SetSucsessfull(r.data))
+        // console.log(...Sucsessfull[2]);
+        if (DataReserver.name===null) {
+            SetSucsessfull([false, true, [...Sucsessfull[2], ' Имя']])
+            console.log(Sucsessfull[2]);
+        }
+        if (DataReserver.surname===null) SetSucsessfull([false, true, [...Sucsessfull[2], ' Фамилию']])
+
+        if (DataReserver.date===null) SetSucsessfull([false, true, [...Sucsessfull[2], ' Дату']])
+
+        if (DataReserver.time===null) SetSucsessfull([false, true, [...Sucsessfull[2], ' Время']])
+
+        if (DataReserver.tel===null) SetSucsessfull([false, true, [...Sucsessfull[2], ' Номер телефона']])
+             
+        if (DataReserver.kolvo===null) SetSucsessfull([false, true, [...Sucsessfull[2], ' Количество человек']])
+        
+        if (Sucsessfull[1]) {
+                SetSucsessfull([-1, false])
+                await axios.post('https://back-restoraunt.vercel.app/api?for=reserved', JSON.stringify([
+                DataReserver.name, 
+                DataReserver.surname, 
+                DataReserver.date, 
+                DataReserver.time,
+                DataReserver.tel,
+                DataReserver.kolvo,
+                DataReserver.info]))
+                .then(r=>SetSucsessfull([r.data, Sucsessfull[1]]))
+        }
+                
+        
         
     }
 
     return(
         <div className='reserved'>
-            {Sucsessfull===-1?
+            {Sucsessfull[0]===-1?
                 <div className='reserved-load'>
                     <p>
                     <img src={reload} alt='Загрузка'/>
@@ -45,8 +64,8 @@ const Reserved = () => {
                 </div>
             :
             <></>}
-            {Sucsessfull===1?
-                <div className='reserved-sucs' onClick={()=>SetSucsessfull(false)}>
+            {Sucsessfull[0]===1?
+                <div className='reserved-sucs' onClick={()=>SetSucsessfull([false, Sucsessfull[1]])}>
                     <span onClick={e=>e.stopPropagation()}>
                         <h1>Вы зарезервировали стол</h1>
                         <p>На имя: {DataReserver.surname} {DataReserver.name}</p>
@@ -59,7 +78,13 @@ const Reserved = () => {
             :
             <></>
             }
-            {Sucsessfull===2?
+            {Sucsessfull[1]?
+            <div className="reserved-sucs" onClick={()=>SetSucsessfull([false, Sucsessfull[1]])}>
+                <span onClick={e=>e.stopPropagation()}>Введите{Sucsessfull[2].join(',')}</span>
+            </div>
+            :
+            <></>}
+            {Sucsessfull[0]===2 ?
             <div>
                 Возникла ошибка
             </div>
